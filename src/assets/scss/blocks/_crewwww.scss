@@ -1,0 +1,25 @@
+.login {
+    height: 100vh;
+    background-image: url('../images/login__bg.jpg');
+    padding: 223px 0 50px;
+    &__title {
+        font-family: 'Century Gothic';
+        font-size: 73px;
+        line-height: 90px;
+        font-weight: 700;
+        letter-spacing: -3.052px;
+        color: #fff;
+    }
+    &__bottom {
+        margin-top: 40px;
+        font-family: 'Nunito';
+        font-size: 18px;
+        text-align: center;
+        color: #fff;
+    }
+    &__links {
+        margin: 24px 20.5px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+}

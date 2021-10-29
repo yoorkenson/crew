@@ -1,0 +1,20 @@
+.header {
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    &_reg {
+        justify-content: left;
+    }
+    &__title {
+        color: $main-color;
+        font-size: 36px;
+        font-family: 'Nunito';
+        font-weight: 800;
+        @include back_triangle;
+        position: relative;
+        padding-left: 34px;
+    }
+    &__right {
+        color: $main-color;
+    }
+}

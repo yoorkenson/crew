@@ -1,0 +1,9 @@
+@mixin back_triangle {
+    &::before {
+        content: url('../images/Back.png');
+        position: absolute;
+        display: inline-block;
+        left: 0;
+        top: -4px;
+    }
+}

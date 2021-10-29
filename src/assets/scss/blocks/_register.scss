@@ -1,0 +1,115 @@
+.form {
+    &__item {
+        display: flex;
+        flex-direction: column;
+        margin-top: 24px;
+        &__select {
+            height: 27px;
+            margin-top: 8px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #979797;
+        }
+        select {
+            font-family: 'Roboto';
+            font-style: italic;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 16px;
+            color: rgba(0, 0, 0, 0.3);
+        }
+        option {
+            color: #666666;
+        }
+        label {
+            text-align: left;
+            font-family: 'Nunito';
+            font-size: 16px;
+            font-weight: 700;
+            color: #34495E;
+        }
+        input {
+            margin-top: 8px;
+            border: none;
+            border-bottom: 1px solid #979797;
+            height: 27px;
+            font-family: 'Roboto';
+            font-style: italic;
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.3);
+        }
+        .phone {
+            display: flex;
+            input { 
+                width: calc(100% - 85px);
+            }
+            &__OTP {
+                position: static;
+                border: none;
+                background: transparent;
+                height: 27px;
+                margin-top: 8px;
+                border-bottom: 1px solid #979797;
+                font-family: 'Nunito';
+                font-size: 18px;
+                padding: 0;
+                color: $main-color;
+                cursor: pointer;
+            }
+        }
+        .OTP {
+            display: flex;
+            justify-content: space-between;
+            input {
+                width: 50px;
+                text-align: center;
+                font-size: 16px;
+                line-height: 19px;
+                color: #2C3E50;
+            }
+            &__code {
+                cursor: pointer;
+                border: none;
+                background: transparent;
+                font-family: 'Nunito';
+                font-size: 16px;
+                color: $main-color;
+                text-align: left;
+                font-weight: 700;
+                margin-top: 16px;
+                width: 150px;
+            }
+        }
+    }
+}
+.checkbox__item {
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+    input[type="checkbox"] {
+        margin: 0;
+        width: 21px;
+        height: 21px;
+        background: #F5F5F5;
+        border: 1px solid #979797;
+        border-radius: 2px;
+    }
+    label {
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: #666666;
+        text-align: left;
+        margin-left: 5px;
+        width: 317px;
+    }
+    .orange {
+        color: $main-color;
+    }
+}
+.register__form {
+    .button {
+        margin-top: 24px;
+    }
+}
