@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { RouteNames } from '../routes';
 
 const Register: FC = () => {
     return (
         <div className='register'>
             <div className="container">
                 <div className="header header_reg">
-                    <Link to='' className='header__title'>
+                    <Link to={RouteNames.START} className='header__title'>
                         Let's get started
                     </Link>
                 </div>
@@ -15,13 +16,13 @@ const Register: FC = () => {
                         <label htmlFor="name">
                             Name
                         </label>
-                        <input type="text" name='name' placeholder='placeholder'/>
+                        <input className='item__input' type="text" name='name' placeholder='placeholder'/>
                     </div>
                     <div className="form__item">
                         <label htmlFor="age">
                             Age
                         </label>
-                        <input type="tel" name='age' placeholder='placeholder'/>
+                        <input className='item__input' type="tel" name='age' placeholder='placeholder'/>
                     </div>
                     <div className="form__item">
                         <label htmlFor="gender">
@@ -39,7 +40,7 @@ const Register: FC = () => {
                             Phone Number
                         </label>
                         <div className="phone">
-                            <input type="tel" name='phone' placeholder='placeholder'/>
+                            <input className='item__input' type="tel" name='phone' placeholder='placeholder'/>
                             <button className='phone__OTP'>Send OTP</button>
                         </div>
                     </div>
@@ -71,7 +72,10 @@ const Register: FC = () => {
                             I want to recieve email marketing communications from Crewwww
                         </label>
                     </div>
-                    <input type='submit' className='button' value="Sign up "/>
+                    <NavLink to={RouteNames.EDIT}>
+                        <input type='submit' className='button' value="Sign up "/>
+                    </NavLink>
+                    
                 </form>
             </div>
         </div>

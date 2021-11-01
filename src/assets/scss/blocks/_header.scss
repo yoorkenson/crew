@@ -2,6 +2,7 @@
     padding-top: 50px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     &_reg {
         justify-content: left;
     }
@@ -16,5 +17,9 @@
     }
     &__right {
         color: $main-color;
+        font-family: 'Nunito';
+        font-weight: 700;
+        font-size: 18px;
+
     }
 }

@@ -1,0 +1,44 @@
+.modal {
+    &.active {
+        display: block;
+        position: fixed;
+        z-index: 10;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        background: rgba(0, 0, 0, .3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    display: none;
+    &__window {
+        width: 100%;
+        padding: 36px 10px 10px;
+        background: #fff;
+        border-radius: 16px;
+        .button {
+            width: 100%;
+            margin-top: 24px;
+            &_white {
+                background-color: #fff;
+                color: $main-color;
+                margin-top: 5px;
+            }
+        }
+        &__title {
+            font-family: 'Nunito';
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 27px;
+            color: $main-color;
+        }
+        &__subtitle {
+            margin-top: 8px;
+            font-family: 'Roboto';
+            font-size: 16px;
+            line-height: 19px;
+            color: #2C3E50;
+        }
+    }    
+}

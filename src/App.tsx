@@ -1,12 +1,15 @@
 import React from 'react';
 import './App.css';
-import Register from './pages/Register';
+import AppRouter from './components/AppRouter';
+import Editor from './pages/Editor';
+// import Register from './pages/Register';
 // import Crewwww from './pages/Crewwww';
+
 
 function App() {
 	return (
 		<div className="App">
-			<Register/>
+			<AppRouter/>
 		</div>
 	);
 }
