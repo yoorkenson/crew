@@ -1,0 +1,79 @@
+.event {
+    padding-bottom:40px;
+    &__wrapper {
+        .events__item__descr {
+            margin-top: 24px;
+        }
+    }
+    &__header {
+        padding: 70px 0 18px;
+        border-bottom-left-radius: 16px;
+        &_pink {
+            background: linear-gradient(135deg, #FFBAD2 0%, #FF84A6 100%);
+            backdrop-filter: blur(50px);
+        }
+        &__subtitle {
+            display: block;
+            position: relative;
+            font-family: 'Roboto';
+            font-weight: 400;
+            font-size: 33px;
+            line-height: 39px;
+            padding-left: 16px;
+            text-align: left;
+            @include back_triangle_white;
+        }
+        &__title {
+            margin-top: 8px;
+            padding-left: 16px;
+            font-family: 'Nunito';
+            font-weight: 800;
+            font-size: 36px;
+            line-height: 49px;
+            color: #fff;
+        }
+    }
+    &__main {
+        margin-top: 8px;
+    }
+    &__info {
+        &__top {
+            padding-top: 16px;
+            text-align: left;
+            .events__item__info__mini {
+                margin-right: 16px;
+            }
+            .events__item__icon {
+                margin-right: 16px;
+            }
+        }
+    }
+    &__member {
+        &__item {
+            margin-top: 18px;
+            display: flex;
+            align-items: center;
+        }
+        &__img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 9px;
+        }
+        &__name {
+            font-family: 'Roboto';
+            color: #2C3E50;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            margin-right: 16px;
+        }
+        &__role {
+            font-family: 'Roboto';
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            color: rgba(0, 0, 0, 0.3);
+        }
+    }
+}

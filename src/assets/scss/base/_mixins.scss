@@ -7,3 +7,13 @@
         top: -4px;
     }
 }
+
+@mixin back_triangle_white {
+    &::before {
+        content: url('../images/Back_white.svg');
+        position: absolute;
+        display: inline-block;
+        left: 0;
+        top: -4px;
+    }
+}

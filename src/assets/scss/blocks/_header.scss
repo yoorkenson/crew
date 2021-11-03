@@ -3,6 +3,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    &_events {
+        padding-top: 67px;
+    }
+    &__title_events {
+        color: $main-color;
+        font-size: 36px;
+        font-family: 'Nunito';
+        font-weight: 800;
+    }
     &_reg {
         justify-content: left;
     }

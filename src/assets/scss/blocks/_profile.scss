@@ -1,0 +1,81 @@
+.profile {
+    padding-bottom: 131px;
+    &__slider {
+        margin-top: 24px;
+        
+    }
+    &__about {
+        margin-top: 24px;
+        &__text {
+            margin-top: 8px;
+            font-family: 'Roboto';
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 17px;
+            color: #2C3E50;
+            text-align: left;
+            margin-right: 18px;
+        }
+    }
+    &__basic {
+        margin-top: 37px;
+        &__divider {
+            margin: 0 5px;
+            color: #2C3E50;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+        }
+        &__text {
+            font-family: 'Roboto';
+            font-size: 15px;
+            line-height: 17px;
+            color: #2C3E50;
+            margin: 0 5px;
+            white-space: pre;
+        }
+        &__item {
+            display: flex;
+            align-items: center;
+        }
+        &__wrapper {
+            margin-top: 17px;
+            display: flex;
+            width: auto;
+            overflow-x: scroll;
+        }
+    }
+    &__me {
+        margin-top: 24px;
+        &__wrapper {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        &__item {
+            &:nth-child(3n+3) {
+                margin-right: 0;
+            }
+            margin-top: 8px;
+            margin-right: 16px;
+            background: $main-color;
+            color: #fff;
+            font-family: 'Roboto';
+            font-weight: 400;
+            font-size: 16px;
+            padding: 8px 17px;
+            border-radius: 16px;
+        }
+    }
+    &__interests {
+        margin-top: 24px;
+        &__wrapper {
+            margin-top: 16px;
+        }
+    }
+    &__instagram {
+        margin-top: 24px;
+        &__photos {
+            margin-top: 16px;
+        }
+    }
+}

@@ -27,6 +27,9 @@
     &_login {
         margin-top: 100px;
     }
+    &_event {
+        margin-top: 122px;
+    }
 }
 
 .item__input {
@@ -128,8 +131,12 @@ a {
 
 @import 'blocks/title';
 @import 'blocks/header';
+@import 'blocks/footer';
 
 @import 'blocks/crewwww';
 @import 'blocks/register';
 @import 'blocks/edit';
 @import 'blocks/modal';
+@import 'blocks/profile';
+@import 'blocks/events';
+@import 'blocks/event';

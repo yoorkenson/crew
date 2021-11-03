@@ -1,5 +1,7 @@
 import Crewwww from "../pages/Crewwww";
 import Editor from "../pages/Editor";
+import EventPage from "../pages/EventDetails";
+import Events from "../pages/Events";
 import Profile from "../pages/Profile";
 import Register from "../pages/Register";
 
@@ -14,7 +16,8 @@ export enum RouteNames {
     REGISTER = '/register',
     EDIT = '/edit',
     PROFILE = '/profile',
-    EVENTS = '/events'
+    EVENTS = '/events',
+    EVENT_PAGE = '/event_page'
 }
 
 export const allRoutes: IRoute[] = [
@@ -29,5 +32,11 @@ export const allRoutes: IRoute[] = [
     },
     {
         path: RouteNames.PROFILE, exact: true, component: Profile
+    },
+    {
+        path: RouteNames.EVENTS, exact: true, component: Events
+    },
+    {
+        path: RouteNames.EVENT_PAGE, exact: true, component: EventPage
     }
 ]
