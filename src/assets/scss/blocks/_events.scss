@@ -80,6 +80,27 @@
             font-size: 16px;
             line-height: 18px;
             color: #2C3E50;
+            &_input {
+                font-family: 'Roboto';
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 19px;
+                color: #5C5C5C;
+                border: none;
+                width: 110px;
+                &-number {
+                    font-family: 'Roboto';
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 19px;
+                    color: #5C5C5C;
+                    border: none;
+                    width: 130px;
+                }
+                &::placeholder {
+                    opacity: 1;
+                }
+            }
             &_orange {
                 color: $main-color;
             }
@@ -92,8 +113,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            &_mevents {
+                justify-content: start;
+            }
             &__mini {
                 display: inline;
+                &_mr {
+                    margin-right: 25px;
+                }
             }
         }
         &__descr {

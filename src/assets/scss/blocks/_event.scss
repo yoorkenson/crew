@@ -12,6 +12,65 @@
             background: linear-gradient(135deg, #FFBAD2 0%, #FF84A6 100%);
             backdrop-filter: blur(50px);
         }
+        &_grey {
+            background: linear-gradient(134.72deg, #D8D8D8 0%, #ACA4A1 101.5%);
+        }
+        &__emoji {
+            display: flex;
+            flex-direction: column;
+            margin-left: 18px;
+        }
+        &__edit {
+            font-family: 'Roboto';
+            font-weight: 400;
+            font-size: 9px;
+            line-height: 11px;
+            color: #FFFFFF;
+            text-align: left;
+            &__emoji {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: normal;
+                font-size: 28px;
+                line-height: 33px;
+                width: 150px;
+                text-align: left;
+                background: transparent;
+                border: none;
+            }
+            &__buttons {
+                display:flex;
+                flex-direction: row;
+                
+            }
+        }
+        &__button {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            &_pink {
+                background: linear-gradient(135deg, #FFBAD2 0%, #FF84A6 100%);
+                box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+            }
+            &_brown {
+                background: linear-gradient(154.19deg, rgba(250, 168, 109, 0.85932) 16.3%, #F36F3B 99.47%);
+                box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+            }
+            &_blue {
+                background: linear-gradient(135deg, #BAFFF3 0%, #77B98A 100%);
+                box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+            }
+        }
+        &__buttons {
+            margin-left: 8px;
+            display: flex;
+            flex-direction: row;
+            width: 50px;
+            justify-content: space-between;
+        }
+
         &__subtitle {
             display: block;
             position: relative;
@@ -31,7 +90,31 @@
             font-size: 36px;
             line-height: 49px;
             color: #fff;
+            &_input {
+                &::placeholder {
+                    opacity: 1;
+                }
+                background: transparent;
+                border: none;
+                padding-left: 0;
+            }
         }
+    }
+    &__whatsapp {
+        display: flex;
+        margin-top: 11px;
+        &__input {
+            margin-left: 8px;
+            border: none;
+            font-family: 'Roboto';
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            color: #2C3E50;
+        }
+    }
+    &__about {
+        margin-top: 28px;
     }
     &__main {
         margin-top: 8px;

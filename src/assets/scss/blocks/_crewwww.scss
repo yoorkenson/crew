@@ -1,6 +1,7 @@
 .login {
     height: 100vh;
     background-image: url('../images/login__bg.jpg');
+    background-size: cover;
     padding: 223px 0 50px;
     &__title {
         font-family: 'Century Gothic';

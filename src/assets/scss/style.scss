@@ -30,6 +30,9 @@
     &_event {
         margin-top: 122px;
     }
+    &_inactive {
+        background: #D8D8D8;
+    }
 }
 
 .item__input {
@@ -129,6 +132,16 @@ a {
     border: none;
 }
 
+.main {
+    &__wrapper {
+        
+    }
+    &__header {
+        display: none;
+    }
+}
+
+
 @import 'blocks/title';
 @import 'blocks/header';
 @import 'blocks/footer';
@@ -140,3 +153,53 @@ a {
 @import 'blocks/profile';
 @import 'blocks/events';
 @import 'blocks/event';
+@import 'blocks/settings';
+
+@media (min-width: 768px) {
+    .login {
+        background-image: url('../images/login__bg-big.jpg');
+        background-position: center 0;
+        &__title {
+            font-size: 122px;
+        }
+    }
+    .footer {
+        
+        width: 375px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 39px;
+    }
+    .main {
+        &__wrapper {
+            background: #F8F8F8;
+            margin: 0 auto;
+            padding: 80px 0 40px;
+            &__app {
+                background: #fff;
+                max-width: 535px;
+                max-height: calc(100vh - 120px);
+                overflow: auto;
+                margin: 0 auto;
+                position: relative;
+                z-index: 0;
+            }
+        }
+        &__header {
+            display: block;
+            position: fixed;
+            top: 0%;
+            padding-left: 20%;
+            text-align: left;
+            height: 40px;
+            width: 100%;
+            background: #fff;
+            font-family: 'Century Gothic';
+            color: #000;
+            font-size: 30px;
+            line-height: 36px;
+            font-weight: 700;
+            letter-spacing: -3.052px;
+        }
+    }
+}

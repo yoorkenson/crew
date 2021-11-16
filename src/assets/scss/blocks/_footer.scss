@@ -1,14 +1,23 @@
 .footer {
     position: fixed;
     background: url('../images/footer.svg');
-    width: 100%;
+    width: inherit;
+    max-width: 535px;
     height: 73px;
     padding: 19px 50px 24px;
-    bottom: -1px;
+    // bottom: -1px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     z-index: 100;
+    background-position: center;
+    background-size: contain;
+
+    width: 375px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+
     &_button {
         padding: 0;
         width: 23px;

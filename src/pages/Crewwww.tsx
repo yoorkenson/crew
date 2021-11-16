@@ -8,10 +8,10 @@ const Crewwww: FC = () => {
     return (
         <>
             <div className= 'login'>
+                <h1 className="login__title">
+                    Crewwww
+                </h1>
                 <div className="container">
-                    <h1 className="login__title">
-                        Crewwww
-                    </h1>
                     <Link to='' className="button button_login">
                         Log in
                     </Link>

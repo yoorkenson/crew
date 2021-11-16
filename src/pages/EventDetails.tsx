@@ -10,7 +10,12 @@ import { RouteNames } from '../routes';
 
 const EventDetails: FC = () => {
     return (
-        <div className='event'>
+        <div className="main__wrapper">
+            <div className="main__header">
+                Crewwww
+            </div>
+            <div className="main__wrapper__app">
+                <div className='event'>
             <div className="event__header event__header_pink">
                 <div className="container">
                     <div className="event__header__wrapper">
@@ -57,7 +62,8 @@ const EventDetails: FC = () => {
                             </div>
                         </div>
                         <div className="events__item__descr">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
                         </div>
                         <div className="event__members">
                             <div className="event__member__item">
@@ -73,6 +79,8 @@ const EventDetails: FC = () => {
                         <button className="button button_event">Join</button>
                     </div>
                 </div>
+            </div>
+        </div>
             </div>
         </div>
     );

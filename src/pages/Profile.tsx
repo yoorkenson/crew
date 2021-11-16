@@ -9,12 +9,18 @@ import portfolio from '../assets/images/portfolio.svg'
 import smoke from '../assets/images/smoke.svg'
 import sqImage from '../assets/images/Rectangle.jpg'
 import Footer from '../components/Footer';
+import Slider from '../components/Slider';
 
 const Profile: FC = () => {
     return (
         <>
-            <Footer/>
-            <div className="profile">
+            <div className="main__wrapper">
+                <div className="main__header">
+                    Crewwww
+                </div>
+                <div className="main__wrapper__app">
+                    <Footer/>
+                    <div className="profile">
                 <div className="container">
                     <div className="header header_edit">
                         <Link to={RouteNames.EVENTS} className='header__title'>
@@ -29,7 +35,7 @@ const Profile: FC = () => {
                             Jessica Tan
                         </div>
                         <div className="profile__slider__wrapper">
-                            SLIDER
+                            <Slider/>
                         </div>
                     </div>
                     <div className="profile__about">
@@ -160,6 +166,8 @@ const Profile: FC = () => {
                             <div className="profile__instagram__slides">. . .</div>
                         </div>
                     </div>
+                </div>
+            </div>
                 </div>
             </div>
         </>

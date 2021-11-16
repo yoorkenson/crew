@@ -1,0 +1,46 @@
+.settings {
+    margin-top: 8px;
+    &__avatar {
+        margin-top: 18px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &__image {
+            width: 113px;
+            height: 113px;
+            border-radius: 50%;
+        }
+    }
+    &__edit {
+       color: #34495E;
+       font-family: 'Nunito';
+       font-weight: 400;
+       font-size: 16px;
+       line-height: 22px;
+       position: relative;
+       width: 110px;
+       padding-left: 25px;
+       margin: 10px auto 24px;
+       &::before {
+        content: url('../images/pen.svg');
+        position: absolute;
+        display: inline-block;
+        left: 0;
+        top: -4px;
+        }
+    }    
+    &__link {
+        display: block;
+        text-align: left;
+        font-family: 'Nunito';
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 22px;
+        color: #34495E;
+    }
+}
+.divider {
+    border-bottom: 0.5px solid #34495E;
+    margin: 8px 0;
+    opacity: .5;
+}
