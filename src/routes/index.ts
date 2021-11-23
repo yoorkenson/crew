@@ -3,6 +3,7 @@ import Editor from "../pages/Editor";
 import EventAdd from "../pages/EventAdd";
 import EventPage from "../pages/EventDetails";
 import Events from "../pages/Events";
+import Login from "../pages/Login";
 import MyEvents from "../pages/MyEvents";
 import Profile from "../pages/Profile";
 import Register from "../pages/Register";
@@ -16,6 +17,7 @@ export interface IRoute {
 
 export enum RouteNames {
     START = '/',
+    LOGIN = '/login',
     REGISTER = '/register',
     EDIT = '/edit',
     PROFILE = '/profile',
@@ -29,6 +31,9 @@ export enum RouteNames {
 export const allRoutes: IRoute[] = [
     {
         path: RouteNames.START, exact: true, component: Crewwww
+    },
+    {
+        path: RouteNames.LOGIN, exact: true, component: Login
     },
     {
         path: RouteNames.REGISTER, exact: true, component: Register

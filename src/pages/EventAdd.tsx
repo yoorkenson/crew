@@ -6,6 +6,7 @@ import location from '../assets/images/location.svg'
 import clock from '../assets/images/clock.svg'
 import avatar from '../assets/images/avatar.png'
 import visible from '../assets/images/Visiblity.svg'
+import calendar from '../assets/icons/calendar.svg'
 
 const EventAdd = () => {
     return (
@@ -52,13 +53,24 @@ const EventAdd = () => {
                                 </div>
                                 <div className="events__item__info__mini">
                                     <img src={person} alt="" className="events__item__icon"/>
-                                    <input className="events__item__text events__item__text_input events__item__text_input-number" placeholder='Set group size 2-6'/>
+                                    <select className="events__item__text events__item__text_input events__item__text_input-number" placeholder='Set group size 2-6'>
+                                        <option value="" disabled selected>Set group size 2-6</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </select>
                                 </div>
                             </div>
                             <div className="event__info__top">
                                 <div className="events__item__info__mini">
                                     <img src={clock} alt="" className="events__item__icon"/>
                                     <input className="events__item__text events__item__text_input" placeholder='At what time?'/>
+                                </div>
+                                <div className="events__item__info__mini">
+                                    <img src={calendar} alt="" className="events__item__icon"/>
+                                    <input className="events__item__text events__item__text_input" placeholder="What's date?"/>
                                 </div>
                             </div>
                             <div className="editor__about event__about">

@@ -16,12 +16,12 @@
     &__wrapper {
         margin-top: 16px;
         backdrop-filter: blur(10px);
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
     }
     &__item {
         border-radius: 16px;
         position: relative;
         margin-bottom: 22px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
         &_green {
             background: linear-gradient(136.02deg, rgba(186, 255, 243, 0.2) -8.03%, rgba(119, 185, 138, 0.2) 104.69%);
             &::before {
@@ -95,7 +95,14 @@
                     line-height: 19px;
                     color: #5C5C5C;
                     border: none;
-                    width: 130px;
+                    width: auto;
+                    background: transparent;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    option {
+                        background:transparent;
+                    }
                 }
                 &::placeholder {
                     opacity: 1;
@@ -107,6 +114,7 @@
         }
         &__icon {
             margin-right: 8px;
+            max-width: 17px;
         }
         &__info {
             margin-top: 16px;

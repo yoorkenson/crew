@@ -10,8 +10,13 @@ import smoke from '../assets/images/smoke.svg'
 import sqImage from '../assets/images/Rectangle.jpg'
 import Footer from '../components/Footer';
 import Slider from '../components/Slider';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 
 const Profile: FC = () => {
+
+    const {registerInfo} = useTypedSelector(state => state.register)
+    const {editInfo} = useTypedSelector(state => state.edit)
+
     return (
         <>
             <div className="main__wrapper">
@@ -32,7 +37,7 @@ const Profile: FC = () => {
                     </div>
                     <div className="profile__slider">
                         <div className="title_black">
-                            Jessica Tan
+                            {registerInfo.name}
                         </div>
                         <div className="profile__slider__wrapper">
                             <Slider/>
@@ -43,7 +48,7 @@ const Profile: FC = () => {
                             About me
                         </div>
                         <div className="profile__about__text">
-                        I am a laid back californian looking to make friends in la, I recently moved here from San Diego. I think im a pretty relaxed person, work in tech. I enjoy soaking in the sun, hiking, surfing, drinks and beach vibes.        
+                            {editInfo.about}
                         </div>
                     </div>
                     <div className="profile__basic">
@@ -54,42 +59,42 @@ const Profile: FC = () => {
                             <div className="profile__basic__item">
                                 <img src={person} alt="" className="profile__basic__icon"/>
                                 <p className="profile__basic__text">
-                                    28
+                                    {editInfo.age}
                                 </p>
                             </div>
                             <div className="profile__basic__divider">|</div>
                             <div className="profile__basic__item">
                                 <img src={location} alt="" className="profile__basic__icon"/>
                                 <p className="profile__basic__text">
-                                    tanjong pagar
+                                    {editInfo.location}
                                 </p>
                             </div>
                             <div className="profile__basic__divider">|</div>
                             <div className="profile__basic__item">
                                 <img src={edu} alt="" className="profile__basic__icon"/>
                                 <p className="profile__basic__text">
-                                    usc
+                                    {editInfo.education}
                                 </p>
                             </div>
                             <div className="profile__basic__divider">|</div>
                             <div className="profile__basic__item">
                                 <img src={alcohol} alt="" className="profile__basic__icon"/>
                                 <p className="profile__basic__text">
-                                    yes
+                                    {editInfo.alcohol ? 'Yes' : 'No'}
                                 </p>
                             </div>
                             <div className="profile__basic__divider">|</div>
                             <div className="profile__basic__item">
                                 <img src={portfolio} alt="" className="profile__basic__icon"/>
                                 <p className="profile__basic__text">
-                                    accountant
+                                    {editInfo.job}
                                 </p>
                             </div>
                             <div className="profile__basic__divider">|</div>
                             <div className="profile__basic__item">
                                 <img src={smoke} alt="" className="profile__basic__icon"/>
                                 <p className="profile__basic__text">
-                                    yes
+                                    {editInfo.smoking ? 'Yes' : 'No'}
                                 </p>
                             </div>
                         </div>
@@ -99,27 +104,13 @@ const Profile: FC = () => {
                             I am ...
                         </div>
                         <div className="profile__me__wrapper">
-                            <div className="profile__me__item">
-                                chill
-                            </div>
-                            <div className="profile__me__item">
-                                adventurous 
-                            </div>
-                            <div className="profile__me__item">
-                                bold
-                            </div>
-                            <div className="profile__me__item">
-                                introverted
-                            </div>
-                            <div className="profile__me__item">
-                                quirky
-                            </div>
-                            <div className="profile__me__item">
-                                funny
-                            </div>
-                            <div className="profile__me__item">
-                                spiritual
-                            </div>
+                            {editInfo.amCheck && editInfo.amCheck.map(item => {
+                                return (
+                                    <div className="profile__me__item" key={item}>
+                                        {item}
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
                     <div className="profile__me profile__interests">
@@ -127,24 +118,13 @@ const Profile: FC = () => {
                             My interests include ...
                         </div>
                         <div className="profile__me__wrapper profile__interests__wrapper">
-                            <div className="profile__me__item">
-                                art
-                            </div>
-                            <div className="profile__me__item">
-                                food (the good stuff) 
-                            </div>
-                            <div className="profile__me__item">
-                                film
-                            </div>
-                            <div className="profile__me__item">
-                                hikes
-                            </div>
-                            <div className="profile__me__item">
-                                beach
-                            </div>
-                            <div className="profile__me__item">
-                                explore the city
-                            </div>
+                            {editInfo.interestsCheck && editInfo.interestsCheck.map(item => {
+                                return (
+                                    <div className="profile__me__item" key={item}>
+                                        {item}
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
                     <div className="profile__instagram">

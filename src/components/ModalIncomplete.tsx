@@ -1,7 +1,15 @@
-import React, { FC, useState } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
+import { useHistory } from 'react-router-dom';
+import { RouteNames } from '../routes';
 
-const ModalIncomplete: FC = () => {
-    const [modalInc, setModalInc] = useState(false)
+interface ModalIncompleteProps {
+    modalInc: boolean
+    setModalInc: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const ModalIncomplete: FunctionComponent<ModalIncompleteProps> = (props: ModalIncompleteProps & { children?: ReactNode }) => {
+    const {modalInc, setModalInc} = props
+    const history = useHistory();
     return (
         <div className={modalInc ? 'modal active' : 'modal'}>
             <div className="modal__wrapper">
@@ -14,7 +22,7 @@ const ModalIncomplete: FC = () => {
                             You will have a higher chance of matching with a more complete profile.
                         </div>
                         <button className="button" onClick={() => setModalInc(!modalInc)}>Back to edit</button>
-                        <button className="button button_white">Skip for now</button>
+                        <button className="button button_white" onClick={() => history.push(RouteNames.PROFILE)}>Skip for now</button>
                     </div>
                 </div>
             </div>

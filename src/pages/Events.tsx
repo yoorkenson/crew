@@ -20,7 +20,7 @@ const Events: FC = () => {
                                 <Link to={RouteNames.PROFILE} className='header__title'>
                                     Events
                                 </Link>
-                                <Link to={RouteNames.EDIT} className='header__right'>
+                                <Link to={RouteNames.MY_EVENTS} className='header__right'>
                                     My events
                                 </Link>
                             </div>

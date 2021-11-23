@@ -1,8 +1,11 @@
 .header {
-    padding-top: 50px;
+    padding-top: 45px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    &_edit {
+        padding-top: 45px;
+    }
     &_events {
         padding-top: 67px;
     }
@@ -23,6 +26,7 @@
         @include back_triangle;
         position: relative;
         padding-left: 34px;
+        cursor: pointer;
     }
     &__right {
         color: $main-color;
@@ -30,5 +34,8 @@
         font-weight: 700;
         font-size: 18px;
 
+    }
+    &_login {
+        @include back_cross;
     }
 }

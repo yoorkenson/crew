@@ -14,7 +14,7 @@ const MyEvents: FC = () => {
                     Crewwww
                 </div>
                 <div className="main__wrapper__app">
-                    <Footer/>
+                    
                     <div className="events">
                 <div className="container">
                     <div className="header header_edit">
@@ -65,6 +65,7 @@ const MyEvents: FC = () => {
                     </div>
                 </div>
             </div>
+                    <Footer/>
                 </div>
             </div>
         </>

@@ -1,7 +1,7 @@
 import React from "react";
 import "../assets/css/Slider.css";
-import leftArrow from "./icons/left-arrow.svg";
-import rightArrow from "./icons/right-arrow.svg";
+import leftArrow from "../assets/icons/left-arrow.svg";
+import rightArrow from "../assets/icons/right-arrow.svg";
 
 interface BtnSliderParams {
   direction: string;

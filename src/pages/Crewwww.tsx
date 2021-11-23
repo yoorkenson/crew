@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import fb from '../assets/images/Variant6.svg'
 import google from '../assets/images/Variant5.svg'
 import tel from '../assets/images/Variant4.svg'
+import { RouteNames } from '../routes';
 
 const Crewwww: FC = () => {
     return (
@@ -12,7 +13,7 @@ const Crewwww: FC = () => {
                     Crewwww
                 </h1>
                 <div className="container">
-                    <Link to='' className="button button_login">
+                    <Link to={RouteNames.LOGIN} className="button button_login">
                         Log in
                     </Link>
                     <div className="login__bottom">

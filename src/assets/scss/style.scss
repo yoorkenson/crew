@@ -26,6 +26,9 @@
     }
     &_login {
         margin-top: 100px;
+        &__page {
+            margin-top: 45px;
+        }
     }
     &_event {
         margin-top: 122px;
@@ -33,6 +36,7 @@
     &_inactive {
         background: #D8D8D8;
     }
+
 }
 
 .item__input {
@@ -133,9 +137,9 @@ a {
 }
 
 .main {
-    &__wrapper {
+    // &__wrapper {
         
-    }
+    // }
     &__header {
         display: none;
     }
@@ -167,7 +171,6 @@ a {
         
         width: 375px;
         left: 50%;
-        transform: translateX(-50%);
         bottom: 39px;
     }
     .main {
@@ -178,7 +181,7 @@ a {
             &__app {
                 background: #fff;
                 max-width: 535px;
-                max-height: calc(100vh - 120px);
+                height: calc(100vh - 120px);
                 overflow: auto;
                 margin: 0 auto;
                 position: relative;

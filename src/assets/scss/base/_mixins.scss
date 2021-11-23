@@ -17,3 +17,13 @@
         top: -4px;
     }
 }
+
+@mixin back_cross {
+    &::before {
+        content: url('../icons/cross.svg');
+        position: absolute;
+        display: inline-block;
+        left: 0;
+        top: -4px;
+    }
+}

@@ -1,0 +1,17 @@
+[
+    {
+        "eventId": "1",
+        "emoji": "🍦 🍦 🍦",
+        "title": "Lunch fo 300 bucks",
+        "color": "pink",
+        "location": "Pooshkin ST",
+        "joined": 3,
+        "full": 4,
+        "date": "25-11-2021",
+        "time": "15:30",
+        "description": "Sample text I really wanted to check out the seasonal flavors of icecream at Birds of Paradise in katong. Anyone interested in joining? we can walk around the area after. Feel free to join the group and send me a message, i’ll make a group for those who join!",
+        "creatorID": 1,
+        "membersid": [2, 3],
+        "chat": "https://wa.me/82324590"
+    }
+] 

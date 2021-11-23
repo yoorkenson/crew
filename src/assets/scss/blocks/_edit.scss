@@ -17,6 +17,7 @@
                 height: 109px;
                 margin-top: 9px;
                 cursor: pointer;
+                border: none;
             }
         }
     }
@@ -133,4 +134,8 @@
             margin-top: 8px;
         }
     }
+}
+.social__item__visible {
+    width: 28px;
+    height: 21px;
 }
