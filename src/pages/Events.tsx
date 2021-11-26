@@ -17,9 +17,9 @@ const Events: FC = () => {
                         <div className="container">
                         
                             <div className="header header_edit">
-                                <Link to={RouteNames.PROFILE} className='header__title'>
+                                <div className='header__title'>
                                     Events
-                                </Link>
+                                </div>
                                 <Link to={RouteNames.MY_EVENTS} className='header__right'>
                                     My events
                                 </Link>

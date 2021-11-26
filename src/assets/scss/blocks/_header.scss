@@ -23,17 +23,25 @@
         font-size: 36px;
         font-family: 'Nunito';
         font-weight: 800;
-        @include back_triangle;
         position: relative;
-        padding-left: 34px;
+        cursor: default;
+    }
+    &__link {
+        display: inline-block;
+        @include back_triangle;
+        width: 34px;
+        height: auto;
         cursor: pointer;
+        &__wrapper {
+            position: relative;
+            display: flex;
+        }
     }
     &__right {
         color: $main-color;
         font-family: 'Nunito';
         font-weight: 700;
         font-size: 18px;
-
     }
     &_login {
         @include back_cross;

@@ -18,9 +18,12 @@ const MyEvents: FC = () => {
                     <div className="events">
                 <div className="container">
                     <div className="header header_edit">
-                        <Link to={RouteNames.MY_EVENTS} className='header__title'>
+                        <div className="header__link__wrapper">
+                            <Link to={RouteNames.MY_EVENTS} className='header__link'/>
+                            <h1 className='header__title'>
                             My Events
-                        </Link>
+                            </h1>
+                        </div>
                         <Link to={RouteNames.EVENTS} className='header__right'>
                             View all
                         </Link>

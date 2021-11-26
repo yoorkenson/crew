@@ -16,9 +16,12 @@ const Settings = () => {
                     <div className='register'>
                         <div className="container">
                             <div className="header header_reg">
-                                <Link to={RouteNames.EVENT_ADD} className='header__title'>
-                                    Your Settings
-                                </Link>
+                                <div className="header__link__wrapper">
+                                    <Link to={RouteNames.EVENT_ADD} className='header__link'/>
+                                    <h1 className='header__title'>
+                                        Your Settings
+                                    </h1>
+                                </div>
                             </div>
                             <div className="settings">
                                 <div className="title_black">

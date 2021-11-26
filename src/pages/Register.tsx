@@ -15,9 +15,13 @@ const Register: FC = () => {
                 <div className='register'>
                     <div className="container">
                         <div className="header header_reg">
-                            <Link to={RouteNames.START} className='header__title'>
-                                Let's get started
-                            </Link>
+                            <div className="header__link__wrapper">
+                                <Link to={RouteNames.START} className='header__link'/>
+                                <h1 className='header__title'>
+                                    Let's get started
+                                </h1>
+                            </div>
+                            
                         </div>
                         <RegisterForm/>
 

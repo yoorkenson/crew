@@ -53,8 +53,11 @@ const Editor: FC = () => {
                 <div className="editor">
                     <div className="container">
                         <div className="header header_edit">
-                            <div onClick={openDisc} className='header__title'>
+                            <div className="header__link__wrapper">
+                                <div onClick={openDisc} className='header__link'/>
+                                <h1 className='header__title'>
                                 Edit Profile
+                                </h1>
                             </div>
                             <Link to={RouteNames.PROFILE} className='header__right'>
                                 View
@@ -70,7 +73,9 @@ const Editor: FC = () => {
                                 amCheck: editInfo.amCheck,
                                 interestsCheck: editInfo.interestsCheck,
                                 alcohol: editInfo.alcohol,
-                                smoking: editInfo.smoking
+                                alcoholVisible: editInfo.alcoholVisible,
+                                smoking: editInfo.smoking,
+                                smokingVisible: editInfo.smokingVisible
                             }}
                             onSubmit={ values => {
                                     setEdit(values)
@@ -149,7 +154,10 @@ const Editor: FC = () => {
                                                 <div className="social__item__text">
                                                     Alcohol
                                                 </div>
-                                                <img src={values.alcohol ? visible : notVisible} alt="" className="social__item__visible"/>
+                                                <label>
+                                                    <Field name='alcoholVisible' type="checkbox" style={{display: 'none'}}/>
+                                                    <img src={values.alcoholVisible ? visible : notVisible} alt="" className="social__item__visible"/>
+                                                </label>
                                             </div>
                                             <label className="switch">
                                                 <Field name='alcohol' type="checkbox"/>
@@ -161,7 +169,10 @@ const Editor: FC = () => {
                                                 <div className="social__item__text">
                                                     Smoking
                                                 </div>
-                                                <img src={values.smoking ? visible : notVisible} alt="" className="social__item__visible"/>
+                                                <label>
+                                                    <Field name='smokingVisible' type="checkbox" style={{display: 'none'}}/>
+                                                    <img src={values.smokingVisible ? visible : notVisible} alt="" className="social__item__visible"/>
+                                                </label>
                                             </div>
                                             <label className="switch">
                                                 <Field name='smoking' type="checkbox" style={{display: 'none'}}/>

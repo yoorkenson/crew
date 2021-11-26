@@ -19,6 +19,9 @@
             display: flex;
             flex-direction: column;
             margin-left: 18px;
+            &_nm {
+                margin-left: 0;
+            }
         }
         &__edit {
             font-family: 'Roboto';
@@ -70,7 +73,7 @@
             width: 50px;
             justify-content: space-between;
         }
-
+        
         &__subtitle {
             display: block;
             position: relative;
@@ -78,9 +81,16 @@
             font-weight: 400;
             font-size: 33px;
             line-height: 39px;
-            padding-left: 16px;
+            // padding-left: 16px;
             text-align: left;
-            @include back_triangle_white;
+            &__link {
+                display: inline-block;
+                @include back_triangle_white;
+                width: 28px;
+                &_18 {
+                    width: 18px;
+                }
+            }
         }
         &__title {
             margin-top: 8px;

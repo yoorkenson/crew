@@ -47,7 +47,10 @@
     font-family: 'Roboto';
     font-style: italic;
     font-size: 16px;
-    color: rgba(0, 0, 0, 0.3);
+    ::placeholder {
+        color: rgba(0, 0, 0, 0.3);
+    }
+    color: rgba(44, 62, 80, 1);
 }
 
 .switch {

@@ -28,9 +28,12 @@ const Profile: FC = () => {
                     <div className="profile">
                 <div className="container">
                     <div className="header header_edit">
-                        <Link to={RouteNames.EVENTS} className='header__title'>
+                        <div className="header__link__wrapper">
+                            <Link to={RouteNames.EVENTS} className='header__link'/>
+                            <h1 className='header__title'>
                             View Profile
-                        </Link>
+                            </h1>
+                        </div>
                         <Link to={RouteNames.EDIT} className='header__right'>
                             Edit
                         </Link>

@@ -32,9 +32,12 @@
             font-weight: 400;
             font-style: italic;
             font-size: 15px;
-            color: rgba(0, 0, 0, 0.3);
+            color: rgba(44, 62, 80, 1);
             outline: none;
             padding: 7px 9px;
+            ::placeholder {
+                color: rgba(0, 0, 0, 0.3);
+            }
         }
     }
     &__info {
@@ -68,7 +71,6 @@
                 }
             }
             &__item {
-                
                 position: relative;
                 display: inline-block;
                 font-family: 'Roboto';

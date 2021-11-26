@@ -19,13 +19,16 @@ const EventAdd = () => {
             <div className="event__header event__header_grey">
                 <div className="container">
                     <div className="event__header__wrapper">
-                        <Link to={RouteNames.EVENTS} className="event__header__subtitle"/>
-                        <div className="event__header__emoji">
-                            <input className='event__header__edit__emoji' type="text" placeholder='🍦🎉'/>
-                            <div className="event__header__edit">
-                                Use emojis to describe your event!
+                        <div className="header__link__wrapper">
+                            <Link to={RouteNames.EVENTS} className="event__header__subtitle__link event__header__subtitle__link_18"/>
+                            <div className="event__header__emoji event__header__emoji_nm">
+                                <input className='event__header__edit__emoji' type="text" placeholder='🍦🎉'/>
+                                <div className="event__header__edit">
+                                    Use emojis to describe your event!
+                                </div>
                             </div>
                         </div>
+                        
                         <div className="event__header__emoji">
                             <input className='event__header__title event__header__title_input' type="text" placeholder='Add an event title'/>
                             <div className="event__header__edit__buttons">

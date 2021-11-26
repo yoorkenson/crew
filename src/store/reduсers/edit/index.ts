@@ -11,7 +11,9 @@ const initialState: EditState = {
         amCheck: [],
         interestsCheck: [],
         alcohol: false,
-        smoking: false
+        alcoholVisible: true,
+        smoking: false,
+        smokingVisible: true
     } as IEdit,
     isLoading: false,
     error: ''

@@ -34,7 +34,7 @@ const Footer: FC = () => {
                 <Link to={RouteNames.EVENT_ADD} className="footer__plus">
                     <img src={plus} alt=""/>
                 </Link>
-                <Link to={RouteNames.PROFILE} className="footer__right footer_button">
+                <Link to={RouteNames.SETTINGS} className="footer__right footer_button">
                     <img src={events ? profile : profileActive} alt="profile" className="footer__img"/>
                 </Link>
             </div>

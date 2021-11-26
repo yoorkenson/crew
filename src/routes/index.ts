@@ -28,7 +28,7 @@ export enum RouteNames {
     SETTINGS = '/settings'
 }
 
-export const allRoutes: IRoute[] = [
+export const publicRoutes: IRoute[] = [
     {
         path: RouteNames.START, exact: true, component: Crewwww
     },
@@ -37,7 +37,10 @@ export const allRoutes: IRoute[] = [
     },
     {
         path: RouteNames.REGISTER, exact: true, component: Register
-    },
+    }
+]
+
+export const privateRoutes: IRoute[] = [
     {
         path: RouteNames.EDIT, exact: true, component: Editor
     },

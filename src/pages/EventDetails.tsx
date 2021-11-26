@@ -19,9 +19,12 @@ const EventDetails: FC = () => {
             <div className="event__header event__header_pink">
                 <div className="container">
                     <div className="event__header__wrapper">
-                        <Link to={RouteNames.EVENTS} className="event__header__subtitle">
-                            🍦🍦🍦
-                        </Link>
+                        <div className="header__link__wrapper">
+                            <Link to={RouteNames.EVENTS} className="event__header__subtitle__link"/>
+                            <div className="event__header__subtitle">
+                                🍦🍦🍦
+                            </div>
+                        </div>
                         <h1 className="event__header__title">
                             Lets get icecream at Telok Ayer!
                         </h1>
