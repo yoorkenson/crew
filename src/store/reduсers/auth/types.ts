@@ -1,7 +1,7 @@
 import { IUser } from "../../../models/IUser";
 
 export interface AuthState {
-    isAuth: boolean;
+    isAuth: boolean | undefined;
     user: IUser;
     isLoading: boolean;
     error: string;

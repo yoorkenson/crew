@@ -10,7 +10,7 @@ import { RouteNames } from '../routes';
 const Footer: FC = () => {
     const history = useHistory()
     const [events, setEvents] = useState(true)
-    console.log(history)
+    // console.log(history)
     const path = history.location.pathname
 
     const pathCheck = () => {

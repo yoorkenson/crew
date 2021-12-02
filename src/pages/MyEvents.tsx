@@ -19,7 +19,7 @@ const MyEvents: FC = () => {
                 <div className="container">
                     <div className="header header_edit">
                         <div className="header__link__wrapper">
-                            <Link to={RouteNames.MY_EVENTS} className='header__link'/>
+                            <Link to={RouteNames.EVENTS} className='header__link'/>
                             <h1 className='header__title'>
                             My Events
                             </h1>
@@ -38,9 +38,9 @@ const MyEvents: FC = () => {
                     <div className="events__wrapper">
                         
                     <div className="events__item events__item_green">
-                        <div className="events__item__top">
+                        <Link to={RouteNames.EVENT_PAGE} className="events__item__top">
                             🍃🍃🍃
-                        </div>
+                        </Link>
                         <div className="events__item__main">
                             <h2 className="events__item__title">
                                 Lunch @ Gardens by the bay

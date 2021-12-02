@@ -59,47 +59,69 @@ const Profile: FC = () => {
                             My basic info
                         </div>
                         <div className="profile__basic__wrapper">
-                            <div className="profile__basic__item">
-                                <img src={person} alt="" className="profile__basic__icon"/>
-                                <p className="profile__basic__text">
-                                    {editInfo.age}
-                                </p>
-                            </div>
-                            <div className="profile__basic__divider">|</div>
-                            <div className="profile__basic__item">
-                                <img src={location} alt="" className="profile__basic__icon"/>
-                                <p className="profile__basic__text">
-                                    {editInfo.location}
-                                </p>
-                            </div>
-                            <div className="profile__basic__divider">|</div>
-                            <div className="profile__basic__item">
-                                <img src={edu} alt="" className="profile__basic__icon"/>
-                                <p className="profile__basic__text">
-                                    {editInfo.education}
-                                </p>
-                            </div>
-                            <div className="profile__basic__divider">|</div>
-                            <div className="profile__basic__item">
-                                <img src={alcohol} alt="" className="profile__basic__icon"/>
-                                <p className="profile__basic__text">
-                                    {editInfo.alcohol ? 'Yes' : 'No'}
-                                </p>
-                            </div>
-                            <div className="profile__basic__divider">|</div>
-                            <div className="profile__basic__item">
-                                <img src={portfolio} alt="" className="profile__basic__icon"/>
-                                <p className="profile__basic__text">
-                                    {editInfo.job}
-                                </p>
-                            </div>
-                            <div className="profile__basic__divider">|</div>
-                            <div className="profile__basic__item">
-                                <img src={smoke} alt="" className="profile__basic__icon"/>
-                                <p className="profile__basic__text">
-                                    {editInfo.smoking ? 'Yes' : 'No'}
-                                </p>
-                            </div>
+                            { editInfo.age!=='' &&
+                                <div className="profile__basic__item">
+                                    <img src={person} alt="" className="profile__basic__icon"/>
+                                    <p className="profile__basic__text">
+                                        {editInfo.age}
+                                    </p>
+                                </div>
+                            }
+                            { editInfo.location!=='' &&
+                                <>
+                                <div className="profile__basic__divider">|</div>
+                                <div className="profile__basic__item">
+                                    <img src={location} alt="" className="profile__basic__icon"/>
+                                    <p className="profile__basic__text">
+                                        {editInfo.location}
+                                    </p>
+                                </div>
+                                </>
+                            }
+                            { editInfo.education!=='' &&
+                                <>
+                                <div className="profile__basic__divider">|</div>
+                                <div className="profile__basic__item">
+                                    <img src={edu} alt="" className="profile__basic__icon"/>
+                                    <p className="profile__basic__text">
+                                        {editInfo.education}
+                                    </p>
+                                </div>
+                                </>
+                            }
+                            {editInfo.alcoholVisible &&  
+                                <>
+                                    <div className="profile__basic__divider">|</div>
+                                    <div className="profile__basic__item">
+                                        <img src={alcohol} alt="" className="profile__basic__icon"/>
+                                        <p className="profile__basic__text">
+                                            {editInfo.alcohol ? 'Yes' : 'No'}
+                                        </p>
+                                    </div>
+                                </>
+                            }
+                            { editInfo.job!=='' &&
+                                <>
+                                <div className="profile__basic__divider">|</div>
+                                <div className="profile__basic__item">
+                                    <img src={portfolio} alt="" className="profile__basic__icon"/>
+                                    <p className="profile__basic__text">
+                                        {editInfo.job}
+                                    </p>
+                                </div>
+                                </>
+                            }
+                            {editInfo.smokingVisible && 
+                                <>
+                                <div className="profile__basic__divider">|</div>
+                                <div className="profile__basic__item">
+                                    <img src={smoke} alt="" className="profile__basic__icon"/>
+                                    <p className="profile__basic__text">
+                                        {editInfo.smoking ? 'Yes' : 'No'}
+                                    </p>
+                                </div>
+                                </>
+                            }
                         </div>
                     </div>
                     <div className="profile__me">

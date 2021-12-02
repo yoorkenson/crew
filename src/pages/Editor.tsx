@@ -30,6 +30,10 @@ const Editor: FC = () => {
     'hikes', 'beach', 'explore the city', 'road tripping', 'sports',
     'shopping', 'barbeque', 'travel', 'music', 'gym / fitness'
     ]
+    // с 13-го элемента
+    console.log(editInfo.interestsCheck)
+
+    const newInterestsList = interestsList.concat(editInfo.interestsCheck.filter(item => !interestsList.includes(item)))
 
     const history = useHistory();
 
@@ -142,7 +146,7 @@ const Editor: FC = () => {
                                     <div className="title_black">
                                         My interests include ...
                                     </div>
-                                    <MeCheckboxes items={interestsList} name='interestsCheck' add={true}/>
+                                    <MeCheckboxes items={newInterestsList} name='interestsCheck' add={true}/>
                                 </div>
                                 <div className="editor__social">
                                     <div className="title_black">

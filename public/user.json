@@ -1,0 +1,20 @@
+[
+    {
+        "id": "test",
+        "name": "James",
+        "age": "25",
+        "gender": "Male",
+        "phoneNumber": "+71234567890",
+        "emailCheck": true,
+        "about": "e.g I really wanted to check out the seasonal flavors of icecream at Birds of Paradise in katong. Anyone interested in joining? we can walk around the area after. Feel free to join the group and send me a message, i’ll make a whatsapp group for those who join!",
+        "location": "St.Petersburg",
+        "education": "Education University",
+        "job": "",
+        "amCheck":  ["adventurous", "extroverted", "intellectual"],
+        "interestsCheck": ["food (the good stuff)", "explore the city", "music", "musicmaking"],
+        "alcohol": "No",
+        "alcoholVisibled": false,
+        "smoking": "Yes",
+        "smokingVisible": true
+    }
+]

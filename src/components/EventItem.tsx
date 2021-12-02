@@ -1,8 +1,10 @@
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 import clock from '../assets/images/clock.svg'
 import sandClock from '../assets/images/clock_sand.svg'
 import members from '../assets/images/members.svg'
+import { RouteNames } from '../routes';
 
 const EventItem: FC = () => {
     return (
@@ -41,9 +43,9 @@ const EventItem: FC = () => {
                 </div>
             </div>
             <div className="events__item events__item_pink">
-                <div className="events__item__top">
+                <Link to={RouteNames.EVENT_PAGE} className="events__item__top">
                     🍦🍦🍦
-                </div>
+                </Link>
                 <div className="events__item__main">
                     <h2 className="events__item__title">
                         Lets get icecream at Telok Ayer!

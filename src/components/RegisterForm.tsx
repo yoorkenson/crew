@@ -11,7 +11,6 @@ const RegisterForm: FC = () => {
     const { registerInfo, isLoading, error } = useTypedSelector(state => state.register)
     const { setRegister } = useActions()
 
-
     const history = useHistory();
 
     return (
@@ -21,13 +20,20 @@ const RegisterForm: FC = () => {
                 age:'',
                 gender:'',
                 phoneNumber:'',
+                password:'',
+                confirmPassword:'',
                 termsCheck: false,
                 emailCheck: false
             }}
             onSubmit={ values => {
-                setRegister(values)
-                history.push(RouteNames.EDIT)
-                console.log(values)
+                if (values.password === values.confirmPassword) {
+                    setRegister(values)
+                    history.push(RouteNames.EDIT)
+                    console.log(values)
+                } else {
+                    alert('passwords must match')
+                }
+                
             }}
         >
             {({ values }) => (
@@ -79,6 +85,18 @@ const RegisterForm: FC = () => {
                     <Link to='/' className='OTP__code'>
                         Didn’t get a code? 
                     </Link>
+                </div>
+                <div className="form__item">
+                    <label htmlFor="password">
+                        Password
+                    </label>
+                    <Field required className='item__input' type="password" name='password' placeholder='placeholder'/>
+                </div>
+                <div className="form__item">
+                    <label htmlFor="confirmPassword">
+                        Confirm password
+                    </label>
+                    <Field required className='item__input' type="password" name='confirmPassword' placeholder='placeholder'/>
                 </div>
                 <div className='checkbox__item' >
                     <Field type='checkbox' name='termsCheck' />

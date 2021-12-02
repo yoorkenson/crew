@@ -1,10 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { RouteNames } from '../routes';
 import avatar from '../assets/images/avatar.png'
+import { useActions } from '../hooks/useActions';
 
 const Settings = () => {
+
+    const {logout} = useActions()
+    const history = useHistory()
+    const path = history.location.pathname
+
     return (
         <>
             <div className="main__wrapper">
@@ -35,12 +41,27 @@ const Settings = () => {
                                 </div>
                                 <div className="divider"/>
                                 <Link className='settings__link' to={RouteNames.EDIT}>
+                                    Events created
+                                </Link>
+                                <div className="divider"/>
+                                <Link className='settings__link' to={RouteNames.EDIT}>
+                                    Events joined
+                                </Link>
+                                <div className="divider"/>
+                                <Link className='settings__link' to={RouteNames.EDIT}>
                                     Account settings
                                 </Link>
                                 <div className="divider"/>
                                 <Link className='settings__link' to={RouteNames.EDIT}>
                                     Help center
                                 </Link>
+                                <div className="divider"/>
+                                <button className='settings__link' onClick={() => {
+                                    logout()
+                                    history.push(RouteNames.START)
+                                }}>
+                                    Logout
+                                </button>
                                 <div className="divider"/>
                             </div>
                         </div>

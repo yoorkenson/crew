@@ -18,9 +18,17 @@
             font-family: 'Roboto';
             font-style: italic;
             font-weight: 400;
-            font-size: 14px;
-            line-height: 16px;
-            color: rgba(0, 0, 0, 0.3);
+            font-size: 16px;
+            line-height: 18px;
+            color: #2C3E50;
+            &:disabled { 
+                background: green;
+                color: rgba(0, 0, 0, 0.3);
+            }
+            // option:disabled {
+            //     color: #2C3E50;
+            // }
+            // color: rgba(0, 0, 0, 0.3);
         }
         option {
             color: #666666;

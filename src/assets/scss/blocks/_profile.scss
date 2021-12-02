@@ -25,6 +25,7 @@
             font-size: 15px;
             display: flex;
             align-items: center;
+            margin-top: 17px;
         }
         &__text {
             font-family: 'Roboto';
@@ -37,12 +38,15 @@
         &__item {
             display: flex;
             align-items: center;
+            margin-top: 17px;
         }
         &__wrapper {
-            margin-top: 17px;
+            
             display: flex;
-            width: auto;
-            overflow-x: scroll;
+            // width: auto;
+            // overflow-x: scroll;
+            width: 100%;
+            flex-wrap: wrap;
         }
     }
     &__me {
