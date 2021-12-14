@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Field, Form, Formik } from 'formik'
-import { useTypedSelector } from '../hooks/useTypedSelector';
+// import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useHistory } from 'react-router-dom';
 import { useActions } from '../hooks/useActions';
 import { RouteNames } from '../routes';
 
 const RegisterForm: FC = () => {
 
-    const { registerInfo, isLoading, error } = useTypedSelector(state => state.register)
+    // const { registerInfo, isLoading, error } = useTypedSelector(state => state.register)
     const { setRegister } = useActions()
 
     const history = useHistory();

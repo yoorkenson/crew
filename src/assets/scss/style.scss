@@ -47,6 +47,13 @@
     font-family: 'Roboto';
     font-style: italic;
     font-size: 16px;
+    &_no {
+        margin-top: 0;
+        background:transparent;
+        border-bottom: none;
+        height: 19px;
+        width: 100px;
+    }
     ::placeholder {
         color: rgba(0, 0, 0, 0.3);
     }

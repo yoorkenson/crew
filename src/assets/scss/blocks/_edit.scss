@@ -62,7 +62,12 @@
                 position: relative;
                 margin-top: 8px;
                 margin-right: 16px;
-                input {
+                &__cross {
+                    border: none;
+                    background: transparent;
+                    padding: 0 0 0 4px;
+                }
+                input[type=checkbox]{
                     opacity: 0;
                     width: 0;
                     height: 0;
@@ -79,6 +84,8 @@
                 padding: 8px 17px;
                 background: rgba(243, 111, 59, 0.1);
                 border-radius: 16px;
+                display: flex;
+                align-items: end;
                 -webkit-touch-callout: none; 
                 -webkit-user-select: none;  
                 -khtml-user-select: none;    

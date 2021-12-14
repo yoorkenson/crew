@@ -4,6 +4,7 @@ import visible from '../assets/images/Visiblity.svg'
 import notVisible from '../assets/images/nonVisiblity.svg'
 import ModalIncomplete from '../components/ModalIncomplete';
 import ModalDiscard from '../components/ModalDiscard';
+import ModalTags from '../components/ModalTags';
 import { RouteNames } from '../routes';
 import FormImage from '../components/FormImage';
 import { useTypedSelector } from '../hooks/useTypedSelector';
@@ -26,19 +27,24 @@ const Editor: FC = () => {
     'extroverted', 'funny', 'bold', 'intellectual', 'sophisticated',
     'outdoorsy', 'quirky', 'spiritual', 'philosophical'
     ]
-    const interestsList = ['art', 'food (the good stuff)', 'film', 
-    'hikes', 'beach', 'explore the city', 'road tripping', 'sports',
-    'shopping', 'barbeque', 'travel', 'music', 'gym / fitness'
-    ]
-    // с 13-го элемента
-    console.log(editInfo.interestsCheck)
 
-    const newInterestsList = interestsList.concat(editInfo.interestsCheck.filter(item => !interestsList.includes(item)))
+    const {list} = useTypedSelector(state => state.editList)
+
+    // const interestsList = ['art', 'food (the good stuff)', 'film', 
+    // 'hikes', 'beach', 'explore the city', 'road tripping', 'sports',
+    // 'shopping', 'barbeque', 'travel', 'music', 'gym / fitness'
+    // ]
+    // с 13-го элемента
+    // console.log(editInfo.interestsCheck)
+
+
+    // const newInterestsList = interestsList.concat(editInfo.interestsCheck.filter(item => !interestsList.includes(item)))
 
     const history = useHistory();
 
     const [modalDisc, setModalDisc] = useState(false)
     const [modalInc, setModalInc] = useState(false)
+    const [modalTag, setModalTag] = useState(false)
 
     const openDisc = () => {
         setModalDisc(true)
@@ -48,6 +54,8 @@ const Editor: FC = () => {
         <>
             <ModalIncomplete modalInc={modalInc} setModalInc={setModalInc}/>
             <ModalDiscard modalDisc={modalDisc} setModalDisc={setModalDisc}/>
+            <ModalTags modalTag={modalTag} setModalTag={setModalTag}/>
+
             <div className="main__wrapper">
                 <div className="main__header">
                     Crewwww
@@ -146,7 +154,7 @@ const Editor: FC = () => {
                                     <div className="title_black">
                                         My interests include ...
                                     </div>
-                                    <MeCheckboxes items={newInterestsList} name='interestsCheck' add={true}/>
+                                    <MeCheckboxes items={list} name='interestsCheck' add={true}/>
                                 </div>
                                 <div className="editor__social">
                                     <div className="title_black">

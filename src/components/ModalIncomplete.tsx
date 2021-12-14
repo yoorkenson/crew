@@ -22,7 +22,7 @@ const ModalIncomplete: FunctionComponent<ModalIncompleteProps> = (props: ModalIn
                             You will have a higher chance of matching with a more complete profile.
                         </div>
                         <button className="button" onClick={() => setModalInc(!modalInc)}>Back to edit</button>
-                        <button className="button button_white" onClick={() => history.push(RouteNames.PROFILE)}>Skip for now</button>
+                        <button className="button button_white" onClick={() => history.push(RouteNames.PROFILE)}>Complete later</button>
                     </div>
                 </div>
             </div>
