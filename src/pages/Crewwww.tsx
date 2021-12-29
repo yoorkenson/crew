@@ -16,6 +16,9 @@ const Crewwww: FC = () => {
                     <Link to={RouteNames.LOGIN} className="button button_login">
                         Log in
                     </Link>
+                    <Link to={RouteNames.REGISTER} className="button button_login button_login_register">
+                        Sign up
+                    </Link>
                     <div className="login__bottom">
                         Sign up with
                     </div>
@@ -26,9 +29,9 @@ const Crewwww: FC = () => {
                         <a href="#" className="login__link">
                             <img src={google} alt="" className="login__link__img"/>
                         </a>
-                        <Link to='/register' className="login__link">
+                        {/* <Link to={RouteNames.REGISTER} className="login__link">
                             <img src={tel} alt="" className="login__link__img"/>
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
             </div>

@@ -8,12 +8,12 @@ const initialState: EditState = {
         location:'',
         education:'',
         job:'',
-        amCheck: [],
-        interestsCheck: [],
+        am_list: [],
+        interests_list: [],
         alcohol: false,
-        alcoholVisible: true,
+        alcohol_visible: true,
         smoking: false,
-        smokingVisible: true
+        smoking_visible: true
     } as IEdit,
     isLoading: false,
     error: ''

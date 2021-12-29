@@ -6,8 +6,7 @@ import { privateRoutes, publicRoutes, RouteNames } from '../routes';
 
 
 const AppRouter: FC = () => {
-
-    const {isAuth} = useTypedSelector(state => state.auth)
+    const { isAuth } = useTypedSelector(state => state.auth)
         return (
             <Switch>
                 {(isAuth ? privateRoutes : publicRoutes).map(route => 
@@ -16,8 +15,8 @@ const AppRouter: FC = () => {
                             component={route.component}
                             key={route.path}/>
                 )}
-                {isAuth === true && <Redirect to={RouteNames.PROFILE}/>}
-                {isAuth === false && <Redirect to={RouteNames.START}/>}
+                {isAuth && <Redirect to={RouteNames.PROFILE}/>}
+                {!isAuth && <Redirect to={RouteNames.START}/>}
             </Switch>
         );
     // }

@@ -1,13 +1,27 @@
-export interface IEdit {
+import { IRegister } from "./IRegister";
+
+export interface IEdit extends IRegister {
     about: string
-    age: string
     location: string
     education: string
     job: string
-    amCheck: Array<string>
-    interestsCheck: Array<string>;
+    am_list: Array<string>
+    interests_list: Array<string>
     alcohol: boolean
-    alcoholVisible: boolean
+    alcohol_visible: boolean
     smoking: boolean
-    smokingVisible: boolean
+    smoking_visible: boolean
+}
+
+export interface IEditServer extends IRegister {
+    about: string
+    location: string
+    education: string
+    job: string
+    am_list: string
+    interests_list: string
+    alcohol: boolean
+    alcohol_visible: boolean
+    smoking: boolean
+    smoking_visible: boolean
 }

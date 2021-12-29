@@ -2,7 +2,7 @@ import { IUser } from "../../../models/IUser"
 import { AuthAction, AuthActionsEnum, AuthState } from "./types"
 
 const initialState: AuthState = {
-    isAuth: undefined,
+    isAuth: localStorage.getItem('token'),
     error: '',
     isLoading: false,
     user: {} as IUser

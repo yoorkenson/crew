@@ -15,10 +15,10 @@ export enum RegisterActionEnum {
     SET_IS_LOADING = 'SET_IS_LOADING'
 }
 
-export interface SetRegisterAction {
-    type: RegisterActionEnum.SET_REGISTER
-    payload: IRegister
-}
+// export interface SetRegisterAction {
+//     type: RegisterActionEnum.SET_REGISTER
+//     payload: IRegister
+// }
 
 export interface SetSignUpAction {
     type: RegisterActionEnum.SET_SIGN_UP
@@ -36,7 +36,7 @@ export interface SetIsLoadingAction {
 }
 
 export type RegisterAction =
-    SetRegisterAction |
+    // SetRegisterAction |
     SetSignUpAction |
     SetErrorAction |
     SetIsLoadingAction

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { RouteNames } from '../routes';
 import person from '../assets/images/person.svg'
@@ -7,8 +7,20 @@ import clock from '../assets/images/clock.svg'
 import avatar from '../assets/images/avatar.png'
 import visible from '../assets/images/Visiblity.svg'
 import calendar from '../assets/icons/calendar.svg'
+import Picker from 'emoji-picker-react';
 
 const EventAdd = () => {
+
+    const [color, setColor] = useState('event__header event__header_grey')
+    interface IEmojiData {
+        emoji: string
+    }
+
+    const [chosenEmoji, setChosenEmoji] = useState<IEmojiData>();
+    const onEmojiClick = (event: React.MouseEvent<Element, MouseEvent>, emojiObject: IEmojiData) => {
+        setChosenEmoji(emojiObject);
+      };
+    
     return (
         <div className="main__wrapper">
             <div className="main__header">
@@ -16,13 +28,22 @@ const EventAdd = () => {
             </div>
             <div className="main__wrapper__app">
                 <div className='event'>
-            <div className="event__header event__header_grey">
+            <div className={color}>
                 <div className="container">
                     <div className="event__header__wrapper">
                         <div className="header__link__wrapper">
                             <Link to={RouteNames.EVENTS} className="event__header__subtitle__link event__header__subtitle__link_18"/>
                             <div className="event__header__emoji event__header__emoji_nm">
-                                <input className='event__header__edit__emoji' type="text" placeholder='🍦🎉'/>
+                            <div className='event__header__edit__emoji'>
+                            {chosenEmoji ? (
+                                <span>{chosenEmoji.emoji}{chosenEmoji.emoji}{chosenEmoji.emoji}</span>
+                            ) : (
+                                <span>🍦🎉</span>
+                            )}
+                            <Picker onEmojiClick={onEmojiClick} />
+                            </div>
+                                {/* <input className='event__header__edit__emoji' type="text" placeholder='🍦🎉'/> */}
+
                                 <div className="event__header__edit">
                                     Use emojis to describe your event!
                                 </div>
@@ -36,9 +57,9 @@ const EventAdd = () => {
                                     Select a banner Gradient
                                 </div>  
                                 <div className="event__header__buttons">
-                                    <button className="event__header__button event__header__button_pink"/>
-                                    <button className="event__header__button event__header__button_brown"/>
-                                    <button className="event__header__button event__header__button_blue"/>
+                                    <button onClick={() => setColor('event__header event__header_pink')} className="event__header__button event__header__button_pink"/>
+                                    <button onClick={() => setColor('event__header event__header_brown')} className="event__header__button event__header__button_brown"/>
+                                    <button onClick={() => setColor('event__header event__header_blue')} className="event__header__button event__header__button_blue"/>
                                 </div>
                             </div>
                         </div>
@@ -69,12 +90,14 @@ const EventAdd = () => {
                             <div className="event__info__top">
                                 <div className="events__item__info__mini">
                                     <img src={clock} alt="" className="events__item__icon"/>
+
                                     <input className="events__item__text events__item__text_input" placeholder='At what time?'/>
+
                                 </div>
-                                <div className="events__item__info__mini">
+                                {/* <div className="events__item__info__mini">
                                     <img src={calendar} alt="" className="events__item__icon"/>
                                     <input className="events__item__text events__item__text_input" placeholder="What's date?"/>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="editor__about event__about">
                                 <div className="title_black">
@@ -83,7 +106,7 @@ const EventAdd = () => {
                                 <textarea 
                                     maxLength={300}
                                     className='editor__about__textarea'
-                                    placeholder='e.g. I am a laid back californian looking to make friends in la, I recently moved here from San Diego. I think im a pretty relaxed person, work in tech. I enjoy soaking in the sun, hiking, surfing, drinks and beach vibes.'
+                                    placeholder='I really wanted to check out the seasonal flavors of icecream at Birds of Paradise in katong. Anyone interested in joining? we can walk around the area after. Feel free to join the group and send me a message, i’ll make a whatsapp group for those who join!'    
                                 />
                             </div>
                             <div className="event__members">

@@ -1,23 +1,30 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Field, Form, Formik } from 'formik'
 // import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useHistory } from 'react-router-dom';
 import { useActions } from '../hooks/useActions';
 import { RouteNames } from '../routes';
+import { ExtendedIRegister } from '../models/IRegister';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 
 const RegisterForm: FC = () => {
 
     // const { registerInfo, isLoading, error } = useTypedSelector(state => state.register)
-    const { setRegister } = useActions()
+    const { isAuth, isLoading } = useTypedSelector(state => state.auth)
+    const { login, setRegister } = useActions()
 
     const history = useHistory();
+
+    useEffect(() => {
+        if (isAuth) history.push(RouteNames.EDIT)
+    }, [isAuth])
 
     return (
         <Formik
             initialValues={{
-                name:'',
-                age:'',
+                username:'',
+                age:0,
                 gender:'',
                 phoneNumber:'',
                 password:'',
@@ -25,11 +32,23 @@ const RegisterForm: FC = () => {
                 termsCheck: false,
                 emailCheck: false
             }}
-            onSubmit={ values => {
+            onSubmit={ async values => {
+                values.phoneNumber = values.phoneNumber!.replaceAll(/[+\(\)\ -]/g, '')
+
                 if (values.password === values.confirmPassword) {
-                    setRegister(values)
-                    history.push(RouteNames.EDIT)
-                    console.log(values)
+                    
+                    const postRegister: ExtendedIRegister = {
+                        username: values.phoneNumber,
+                        password: values.password,
+                        age: values.age,
+                        gender: values.gender,
+                        email_marketing: values.emailCheck,
+                        phone: values.phoneNumber,
+                        name: values.username
+                    }
+                    await setRegister(postRegister)
+                    await login(values.phoneNumber, values.password)
+                    
                 } else {
                     alert('passwords must match')
                 }
@@ -39,10 +58,10 @@ const RegisterForm: FC = () => {
             {({ values }) => (
             <Form className='register__form'>
                 <div className="form__item">
-                    <label htmlFor="name">
+                    <label htmlFor="username">
                         Name
                     </label>
-                    <Field required className='item__input' type="text" name='name' placeholder='placeholder'/>
+                    <Field required className='item__input' type="text" name='username' placeholder='placeholder'/>
                 </div>
                 <div className="form__item">
                     <label htmlFor="age">
@@ -111,7 +130,7 @@ const RegisterForm: FC = () => {
                     </label>
                 </div>
                     <button type='submit' className={values.termsCheck ? 'button' : 'button button_inactive '} disabled={!values.termsCheck}>
-                        Sign up
+                        {isLoading ? "Loading..." : 'Sign up'}
                     </button>
             </Form>
             )}

@@ -9,8 +9,8 @@ const initialState: RegisterState = {
 
 export default function registerReducer (state = initialState, action : RegisterAction) {
     switch (action.type) {
-        case RegisterActionEnum.SET_REGISTER:
-            return {...state, registerInfo: action.payload, isLoading: false, error: ''}
+        // case RegisterActionEnum.SET_REGISTER:
+        //     return {...state, registerInfo: action.payload, isLoading: false, error: ''}
         case RegisterActionEnum.SET_IS_LOADING:
             return {...state, isLoading: action.payload}
         case RegisterActionEnum.SET_ERROR:

@@ -11,11 +11,12 @@ import { useTypedSelector } from '../hooks/useTypedSelector';
 import { Field, Form, Formik } from 'formik';
 import MeCheckboxes from '../components/MeCheckboxes';
 import { useActions } from '../hooks/useActions';
+import { addUserInfo } from '../api/UserService';
 
 const Editor: FC = () => {
 
     const {registerInfo} = useTypedSelector(state => state.register)
-    const {editInfo} = useTypedSelector(state => state.edit)
+    const {editInfo, isLoading} = useTypedSelector(state => state.edit)
     const { setEdit } = useActions()
 
 
@@ -35,10 +36,10 @@ const Editor: FC = () => {
     // 'shopping', 'barbeque', 'travel', 'music', 'gym / fitness'
     // ]
     // с 13-го элемента
-    // console.log(editInfo.interestsCheck)
+    // console.log(editInfo.interests_list)
 
 
-    // const newInterestsList = interestsList.concat(editInfo.interestsCheck.filter(item => !interestsList.includes(item)))
+    // const newInterestsList = interestsList.concat(editInfo.interests_list.filter(item => !interestsList.includes(item)))
 
     const history = useHistory();
 
@@ -78,28 +79,47 @@ const Editor: FC = () => {
                         <Formik
                             initialValues={{
                                 about:editInfo.about,
-                                age:registerInfo.age,
+                                age:editInfo.age,
                                 location:editInfo.location,
                                 education:editInfo.education,
                                 job:editInfo.job,
-                                amCheck: editInfo.amCheck,
-                                interestsCheck: editInfo.interestsCheck,
+                                am_list: editInfo.am_list,
+                                interests_list: editInfo.interests_list,
                                 alcohol: editInfo.alcohol,
-                                alcoholVisible: editInfo.alcoholVisible,
+                                alcohol_visible: editInfo.alcohol_visible,
                                 smoking: editInfo.smoking,
-                                smokingVisible: editInfo.smokingVisible
+                                smoking_visible: editInfo.smoking_visible
                             }}
-                            onSubmit={ values => {
-                                    setEdit(values)
+                            onSubmit={ async values => {
+                                    // setEdit(values)
                                     console.log(values)
+                                    
                                     if (values.about!=='' && values.age!=='' &&
-                                        values.amCheck.length !== 0 && values.education!=='' && values.interestsCheck.length !== 0 &&
+                                        // values.am_list.length !== 0 && 
+                                        values.education!=='' && 
+                                        // values.interests_list.length !== 0 &&
                                         values.job!=='' && values.location!=='')
                                     {
-                                        setEdit(values)
-                                        history.push(RouteNames.PROFILE)
+                                        // const userInfo = {
+                                        //     about: values.about,
+                                        //     age:values.age,
+                                        //     location:values.location,
+                                        //     education:values.education,
+                                        //     job:values.job,
+                                        //     am_list: values.am_list.join('|'),
+                                        //     interests_list: values.interests_list.join('|'),
+                                        //     alcohol: values.alcohol,
+                                        //     alcohol_visible: values.alcohol_visible,
+                                        //     smoking: values.smoking,
+                                        //     smoking_visible: values.smoking_visible
+                                        // }
+                                        // await setEdit(userInfo)
+                                        // await addUserInfo(userInfo)
+                                        await setEdit(values)
+                                        await addUserInfo(values)
+                                        await history.push(RouteNames.PROFILE)
                                     } else {
-                                        setEdit(values)
+                                        // setEdit(values)
                                         setModalInc(true)
                                     }
                                     
@@ -148,13 +168,13 @@ const Editor: FC = () => {
                                     <div className="title_black">
                                     I am ...
                                     </div>
-                                    <MeCheckboxes items={amList} name='amCheck' add={false}/>
+                                    <MeCheckboxes items={amList} name='am_list' add={false}/>
                                 </div>
                                 <div className="editor__me">
                                     <div className="title_black">
                                         My interests include ...
                                     </div>
-                                    <MeCheckboxes items={list} name='interestsCheck' add={true}/>
+                                    <MeCheckboxes items={list} name='interests_list' add={true}/>
                                 </div>
                                 <div className="editor__social">
                                     <div className="title_black">
@@ -167,8 +187,8 @@ const Editor: FC = () => {
                                                     Alcohol
                                                 </div>
                                                 <label>
-                                                    <Field name='alcoholVisible' type="checkbox" style={{display: 'none'}}/>
-                                                    <img src={values.alcoholVisible ? visible : notVisible} alt="" className="social__item__visible"/>
+                                                    <Field name='alcohol_visible' type="checkbox" style={{display: 'none'}}/>
+                                                    <img src={values.alcohol_visible ? visible : notVisible} alt="" className="social__item__visible"/>
                                                 </label>
                                             </div>
                                             <label className="switch">
@@ -182,8 +202,8 @@ const Editor: FC = () => {
                                                     Smoking
                                                 </div>
                                                 <label>
-                                                    <Field name='smokingVisible' type="checkbox" style={{display: 'none'}}/>
-                                                    <img src={values.smokingVisible ? visible : notVisible} alt="" className="social__item__visible"/>
+                                                    <Field name='smoking_visible' type="checkbox" style={{display: 'none'}}/>
+                                                    <img src={values.smoking_visible ? visible : notVisible} alt="" className="social__item__visible"/>
                                                 </label>
                                             </div>
                                             <label className="switch">
@@ -204,7 +224,7 @@ const Editor: FC = () => {
                                         Not connected
                                     </div>
                                 </div>
-                                <button type='submit' className="button button_24">Save</button>
+                                <button type='submit' className="button button_24">{isLoading ? "Saving..." :"Save"}</button>
                             </Form>
                             )}
                         </Formik>

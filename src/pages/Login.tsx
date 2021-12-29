@@ -43,6 +43,7 @@ const Login: FC = () => {
                                 eye: false,
                             }}
                             onSubmit={ (values) => {
+                                values.username = values.username.replaceAll(/[+\(\)\ -]/g, '')
                                 console.log(values)
                                 login(values.username, values.password)
                             }}

@@ -1,4 +1,4 @@
-import { IEdit } from "../../../models/IEdit";
+import { IEdit, IEditServer } from "../../../models/IEdit";
 
 export interface EditState {
     editInfo: IEdit

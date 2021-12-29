@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { RouteNames } from '../routes';
 import person from '../assets/images/person.svg'
@@ -11,12 +11,17 @@ import sqImage from '../assets/images/Rectangle.jpg'
 import Footer from '../components/Footer';
 import Slider from '../components/Slider';
 import { useTypedSelector } from '../hooks/useTypedSelector';
+import { useActions } from '../hooks/useActions';
 
 const Profile: FC = () => {
 
     const {registerInfo} = useTypedSelector(state => state.register)
     const {editInfo} = useTypedSelector(state => state.edit)
 
+    const { getProfileInfo } = useActions()
+    useEffect(() => {
+            getProfileInfo()
+    }, [])
     return (
         <>
             <div className="main__wrapper">
@@ -40,7 +45,7 @@ const Profile: FC = () => {
                     </div>
                     <div className="profile__slider">
                         <div className="title_black">
-                            {registerInfo.name}
+                            {editInfo.name}
                         </div>
                         <div className="profile__slider__wrapper">
                             <Slider/>
@@ -89,7 +94,7 @@ const Profile: FC = () => {
                                 </div>
                                 </>
                             }
-                            {editInfo.alcoholVisible &&  
+                            {editInfo.alcohol_visible &&  
                                 <>
                                     <div className="profile__basic__divider">|</div>
                                     <div className="profile__basic__item">
@@ -111,7 +116,7 @@ const Profile: FC = () => {
                                 </div>
                                 </>
                             }
-                            {editInfo.smokingVisible && 
+                            {editInfo.smoking_visible && 
                                 <>
                                 <div className="profile__basic__divider">|</div>
                                 <div className="profile__basic__item">
@@ -129,7 +134,7 @@ const Profile: FC = () => {
                             I am ...
                         </div>
                         <div className="profile__me__wrapper">
-                            {editInfo.amCheck && editInfo.amCheck.map(item => {
+                            {editInfo.am_list && editInfo.am_list.map(item => {
                                 return (
                                     <div className="profile__me__item" key={item}>
                                         {item}
@@ -143,7 +148,7 @@ const Profile: FC = () => {
                             My interests include ...
                         </div>
                         <div className="profile__me__wrapper profile__interests__wrapper">
-                            {editInfo.interestsCheck && editInfo.interestsCheck.map(item => {
+                            {editInfo.interests_list && editInfo.interests_list.map(item => {
                                 return (
                                     <div className="profile__me__item" key={item}>
                                         {item}
