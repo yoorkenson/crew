@@ -1,10 +1,15 @@
 export interface IEvent {
     id: string
-    creatorId: string
+    author: string
     membersId: Array<string>
     location: string
     emoji: string
-    title: string
+    slug: string
     date: string
-    maxMembers: number
+    time: string
+    group_size: number
+    color: string
+    description: string
+    chat: string
+    link: string
 }

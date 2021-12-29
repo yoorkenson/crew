@@ -1,8 +1,6 @@
 import { IEvent } from "../../../models/IEvent"
 import { EventAction, EventActionEnum, EventState } from "./types"
 
-
-
 const initialState: EventState = {
     allEvents: {
         events: [] as IEvent[],
@@ -22,7 +20,7 @@ export default function EventReducer (state = initialState, action: EventAction)
         case EventActionEnum.GET_JOINED_EVENTS:
             return {...state, allEvents: {...state.allEvents, joinedEvents: action.payload}}
         case EventActionEnum.ADD_EVENT:
-            return {...state, allEvents: {...state.allEvents, myEvents: state.allEvents.myEvents.push(action.payload)}}
+            return {...state, allEvents: {...state.allEvents, myEvents: state.allEvents.myEvents.concat([action.payload])}}
         default:
             return state
     }

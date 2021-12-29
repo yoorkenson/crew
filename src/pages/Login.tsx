@@ -14,8 +14,8 @@ const Login: FC = () => {
 
     const {error, isLoading} = useTypedSelector(state => state.auth)
 
-    const history = useHistory()
-    const path = history.location.pathname
+    // const history = useHistory()
+    // const path = history.location.pathname
 
     const {login} = useActions()
 
