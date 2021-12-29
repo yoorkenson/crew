@@ -1,24 +1,25 @@
 import { AppDispatch } from "../..";
+import { getMyPosts, getPosts } from "../../../api/UserService";
 import { IEvent } from "../../../models/IEvent";
-import { AddEventAction, EventActionEnum } from "./types";
+import { EventActionEnum, GetCreatedEventsAction, GetEventsAction, SetIsLoadingAction } from "./types";
 
 
 export const EventActionCreators = {
-    // addEvent: (payload: IEvent): AddEventAction => ({type: EventActionEnum.ADD_EVENT, payload}),
-    // fetchEvents: () => async (dispatch: AppDispatch) => {
-    //     try {
-    //         const 
-    //     }
-    // }
-    addEvent: (event: IEvent) => async (dispatch: AppDispatch) => {
-        try {
-            const events = localStorage.getItem('events') || '[]'
-            const json = JSON.parse(events) as IEvent[]
-            json.push(event)
-            // dispatch(EventActionCreators.AddEventAction(json))
-            localStorage.setItem('events', JSON.stringify(json))
-        } catch (e) {
-            console.log(e)
-        }
+    setIsLoading: (loading: boolean): SetIsLoadingAction => ({type: EventActionEnum.SET_IS_LOADING, payload: loading}),
+    setPosts: (posts: IEvent[]): GetEventsAction => ({type: EventActionEnum.GET_EVENTS, payload: posts}),
+    setCreatedPosts: (posts: IEvent[]): GetCreatedEventsAction => ({type: EventActionEnum.GET_CREATED_EVENTS, payload: posts}),
+    getPosts: () =>  async (dispatch: AppDispatch) => {
+        dispatch(EventActionCreators.setIsLoading(true))
+        const posts = await getPosts()
+        dispatch(EventActionCreators.setIsLoading(false))
+        console.log('ALL POSTS: ', posts.data)
+        return dispatch(EventActionCreators.setPosts(posts.data))
+    },
+    getCreatedPosts: (id: number) =>  async (dispatch: AppDispatch) => {
+        dispatch(EventActionCreators.setIsLoading(true))
+        const posts = await getMyPosts(id)
+        dispatch(EventActionCreators.setIsLoading(false))
+        console.log('CREATED POSTS: ', posts.data)
+        return dispatch(EventActionCreators.setCreatedPosts(posts.data))
     }
 }

@@ -135,11 +135,11 @@ const Profile: FC = () => {
                         </div>
                         <div className="profile__me__wrapper">
                             {editInfo.am_list && editInfo.am_list.map(item => {
-                                return (
+                                return item ?(
                                     <div className="profile__me__item" key={item}>
                                         {item}
                                     </div>
-                                )
+                                ) : null
                             })}
                         </div>
                     </div>
@@ -149,11 +149,11 @@ const Profile: FC = () => {
                         </div>
                         <div className="profile__me__wrapper profile__interests__wrapper">
                             {editInfo.interests_list && editInfo.interests_list.map(item => {
-                                return (
+                                return item ?(
                                     <div className="profile__me__item" key={item}>
                                         {item}
                                     </div>
-                                )
+                                ) : null
                             })}
                         </div>
                     </div>

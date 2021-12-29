@@ -31,6 +31,8 @@ const Editor: FC = () => {
 
     const {list} = useTypedSelector(state => state.editList)
 
+    const {setIsLoading} = useActions()
+
     // const interestsList = ['art', 'food (the good stuff)', 'film', 
     // 'hikes', 'beach', 'explore the city', 'road tripping', 'sports',
     // 'shopping', 'barbeque', 'travel', 'music', 'gym / fitness'
@@ -100,26 +102,24 @@ const Editor: FC = () => {
                                         // values.interests_list.length !== 0 &&
                                         values.job!=='' && values.location!=='')
                                     {
-                                        // const userInfo = {
-                                        //     about: values.about,
-                                        //     age:values.age,
-                                        //     location:values.location,
-                                        //     education:values.education,
-                                        //     job:values.job,
-                                        //     am_list: values.am_list.join('|'),
-                                        //     interests_list: values.interests_list.join('|'),
-                                        //     alcohol: values.alcohol,
-                                        //     alcohol_visible: values.alcohol_visible,
-                                        //     smoking: values.smoking,
-                                        //     smoking_visible: values.smoking_visible
-                                        // }
-                                        // await setEdit(userInfo)
-                                        // await addUserInfo(userInfo)
-                                        await setEdit(values)
-                                        await addUserInfo(values)
+                                        const userInfo = {
+                                            about: values.about,
+                                            age:values.age,
+                                            location:values.location,
+                                            education:values.education,
+                                            job:values.job,
+                                            am_list: values.am_list.join('|'),
+                                            interests_list: values.interests_list.join('|'),
+                                            alcohol: values.alcohol,
+                                            alcohol_visible: values.alcohol_visible,
+                                            smoking: values.smoking,
+                                            smoking_visible: values.smoking_visible
+                                        }
+                                        setIsLoading(true)
+                                        await addUserInfo(userInfo)
+                                        await setIsLoading(false)
                                         await history.push(RouteNames.PROFILE)
                                     } else {
-                                        // setEdit(values)
                                         setModalInc(true)
                                     }
                                     
@@ -224,7 +224,7 @@ const Editor: FC = () => {
                                         Not connected
                                     </div>
                                 </div>
-                                <button type='submit' className="button button_24">{isLoading ? "Saving..." :"Save"}</button>
+                                <button type='submit' className="button button_24">{isLoading ? "Saving..." : "Save"}</button>
                             </Form>
                             )}
                         </Formik>

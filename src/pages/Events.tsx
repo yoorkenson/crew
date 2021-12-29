@@ -1,10 +1,22 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import EventItem from '../components/EventItem';
 import Footer from '../components/Footer';
+import { useActions } from '../hooks/useActions';
+import { useTypedSelector } from '../hooks/useTypedSelector';
+import { IEvent } from '../models/IEvent';
 import { RouteNames } from '../routes';
 
 const Events: FC = () => {
+
+    const { allEvents } = useTypedSelector(state => state.event)
+    const {events} = allEvents
+
+    const { getPosts } = useActions()
+    useEffect(() => {
+        getPosts()
+    }, [])
+    
     return (
         <>
             <div className="main__wrapper">
@@ -37,7 +49,16 @@ const Events: FC = () => {
                                 </select>
                             </div>
                             <div className="events__wrapper">
-                                <EventItem/>
+                                {events.map((item: IEvent) => {
+                                    console.log('IT IS AN EVENT ITEM')
+                                    return (
+                                        <EventItem 
+                                            item={item}
+                                            key={item.id}
+                                        />
+                                    )
+                                })}
+                                
                             </div>
                         </div>
                     </div>

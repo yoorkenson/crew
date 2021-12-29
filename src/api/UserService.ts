@@ -25,6 +25,14 @@ export async function addPost(postParameters: any) {
     return sendPost(routes.posts, postParameters);
 }
 
+export async function getPosts() {
+    return getPost(routes.posts);
+}
+
+export async function getMyPosts(id: number) {
+    return getPost(`${routes.posts}/${id}`);
+}
+
 export async function addUserInfo(userParameters: any) {
     return sendUserData(routes.currentUserData, userParameters);
 }

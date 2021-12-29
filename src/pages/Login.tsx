@@ -52,7 +52,7 @@ const Login: FC = () => {
                                     <Form>
                                         <img src={crew} alt="logo" className="login__img"/>
                                         <div className="login__form">
-                                            <Field required className='item__input login__form__input' type="text" name='username' placeholder='Phone number'/>
+                                            <Field required className='item__input login__form__input' type="text" name='username' placeholder='Email'/>
                                             <div className='login__password'>
                                                 <Field required className='item__input login__form__input' type={values.eye ? 'text' : 'password'} name='password' placeholder='Password'/>
                                                 <label className='item__input'>

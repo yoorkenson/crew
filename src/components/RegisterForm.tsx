@@ -26,28 +26,28 @@ const RegisterForm: FC = () => {
                 username:'',
                 age:0,
                 gender:'',
-                phoneNumber:'',
+                email:'',
                 password:'',
                 confirmPassword:'',
                 termsCheck: false,
                 emailCheck: false
             }}
             onSubmit={ async values => {
-                values.phoneNumber = values.phoneNumber!.replaceAll(/[+\(\)\ -]/g, '')
+                // values.email = values.email!.replaceAll(/[+\(\)\ -]/g, '')
 
                 if (values.password === values.confirmPassword) {
                     
                     const postRegister: ExtendedIRegister = {
-                        username: values.phoneNumber,
+                        username: values.email,
                         password: values.password,
                         age: values.age,
                         gender: values.gender,
                         email_marketing: values.emailCheck,
-                        phone: values.phoneNumber,
+                        email: values.email,
                         name: values.username
                     }
                     await setRegister(postRegister)
-                    await login(values.phoneNumber, values.password)
+                    await login(values.email, values.password)
                     
                 } else {
                     alert('passwords must match')
@@ -81,13 +81,17 @@ const RegisterForm: FC = () => {
                     </Field>
                 </div>
                 <div className="form__item">
-                    <label htmlFor="phone">
+                    <label htmlFor="email">
+                        Email
+                    </label>
+                    <Field required className='item__input' type="email" name='email' placeholder='placeholder'/>
+                    {/* <label htmlFor="phone">
                         Phone Number
                     </label>
                     <div className="phone">
-                        <Field required className='item__input' type="tel" name='phoneNumber' placeholder='placeholder'/>
+                        <Field required className='item__input' type="tel" name='email' placeholder='placeholder'/>
                         <button className='phone__OTP'>Send OTP</button>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="form__item">
                     <label htmlFor="OTP">

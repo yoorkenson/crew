@@ -1,12 +1,20 @@
-import React, { FC } from 'react';
+import React, { FC, FunctionComponent, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 
 import clock from '../assets/images/clock.svg'
 import sandClock from '../assets/images/clock_sand.svg'
 import members from '../assets/images/members.svg'
+import { IEvent } from '../models/IEvent';
 import { RouteNames } from '../routes';
 
-const EventItem: FC = () => {
+export interface EventItemProps {
+    item: IEvent
+    key: string
+}
+
+const EventItem: FunctionComponent<EventItemProps> = ({item, key}: EventItemProps & { children?: ReactNode }) => {
+
+
     return (
         <>
             <Link to={RouteNames.EVENT_PAGE} className="events__item events__item_green">

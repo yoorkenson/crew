@@ -3,7 +3,7 @@ export interface IRegister {
     name?: string
     age?: string
     gender?: string
-    phone_number?: string
+    email?: string
     email_marketing?: boolean
 }
 
@@ -14,5 +14,5 @@ export interface ExtendedIRegister {
     age: number,
     gender: string,
     email_marketing: boolean,
-    phone: string,
+    email: string,
 }
