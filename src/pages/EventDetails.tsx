@@ -9,7 +9,7 @@ import { Link, useParams } from 'react-router-dom';
 import { RouteNames } from '../routes';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { IEvent } from '../models/IEvent';
-import { getPost } from '../api/PostsService';
+import { getPost, getUserName } from '../api/PostsService';
 
 interface EventDetailsParams {
     id: string
@@ -41,11 +41,13 @@ const EventDetails: FC = () => {
 
     const [event, setEvent] = useState<IEvent | null>(null);
     const [date, setDate] = useState<Date | null>(null);
+    const [authorName, setAuthorName] = useState<string>('');
 
     const fetchEvent = async (id: string) => {
         if (id) {
             const fetchedEvent = await getPost(id);
             if (fetchedEvent) setEvent(fetchedEvent); 
+            setAuthorName(await getUserName((fetchedEvent as IEvent).author));
         }
     }
 
@@ -107,12 +109,14 @@ const EventDetails: FC = () => {
                                                     ) }
                                                 </div>
                                             </div>
-                                            <div className="events__item__info__mini">
-                                                <img src={sandClock} alt="" className="events__item__icon"/>
-                                                <div className="events__item__text events__item__text_orange">
-                                                    {date && <CountDown targetDate={date} />}
+                                            {date && date > new Date() && (
+                                                <div className="events__item__info__mini">
+                                                    <img src={sandClock} alt="" className="events__item__icon"/>
+                                                    <div className="events__item__text events__item__text_orange">
+                                                        <CountDown targetDate={date} />
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            )}
                                         </div>
                                     </div>
                                     <div className="events__item__descr">
@@ -122,7 +126,7 @@ const EventDetails: FC = () => {
                                         <div className="event__member__item">
                                             <img src={avatar} alt="" className="event__member__img"/>
                                             <div className="event__member__name">
-                                                Jessica Tan
+                                                {authorName}
                                             </div>
                                             <div className="event__member__role">
                                                 creator
