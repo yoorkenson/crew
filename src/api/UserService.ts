@@ -30,7 +30,7 @@ export async function getPosts() {
 }
 
 export async function getMyPosts(id: number) {
-    return getPost(`${routes.posts}/${id}`);
+    return getPost(`${routes.posts}/?author=${id}`);
 }
 
 export async function addUserInfo(userParameters: any) {

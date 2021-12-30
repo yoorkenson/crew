@@ -57,9 +57,9 @@ const EventAdd = () => {
                                     Select a banner Gradient
                                 </div>  
                                 <div className="event__header__buttons">
-                                    <button onClick={() => setColor('event__header event__header_pink')} className="event__header__button event__header__button_pink"/>
-                                    <button onClick={() => setColor('event__header event__header_brown')} className="event__header__button event__header__button_brown"/>
-                                    <button onClick={() => setColor('event__header event__header_blue')} className="event__header__button event__header__button_blue"/>
+                                    <button onClick={() => setColor('events__item events__item_pink event__header event__header_pink')} className="event__header__button event__header__button_pink"/>
+                                    <button onClick={() => setColor('events__item events__item_brown event__header event__header_brown')} className="event__header__button event__header__button_brown"/>
+                                    <button onClick={() => setColor('events__item events__item_blue event__header event__header_blue')} className="event__header__button event__header__button_blue"/>
                                 </div>
                             </div>
                         </div>

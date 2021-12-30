@@ -17,12 +17,25 @@
         margin-top: 16px;
         backdrop-filter: blur(10px);
     }
+    .event__header {
+        padding: 0;
+        &_blue {
+            background: linear-gradient(136.02deg, rgba(186,255,243,0.2) -8.03%, rgba(119,185,138,0.2) 104.69%);
+        }
+        &_pink {
+            background: linear-gradient(135deg, rgba(255,186,210,0.2) 0%, rgba(255,132,166,0.2) 100%);
+        }
+        &_brown {
+            background: linear-gradient(135deg, rgba(255, 214, 185, 0.2) 0%, rgba(243, 111, 59, 0.2) 100%);
+        }
+    }
     &__item {
         border-radius: 16px;
         position: relative;
         margin-bottom: 22px;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
-        &_green {
+        display: block;
+        &_blue {
             background: linear-gradient(136.02deg, rgba(186, 255, 243, 0.2) -8.03%, rgba(119, 185, 138, 0.2) 104.69%);
             &::before {
                 content: '';

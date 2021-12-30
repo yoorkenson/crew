@@ -1,6 +1,7 @@
 import { IRegister } from "./IRegister";
 
 export interface IEdit extends IRegister {
+    id?: number
     about: string
     location: string
     education: string
