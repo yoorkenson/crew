@@ -35,9 +35,12 @@ export const CountDown = ({targetDate} : CountDownProps) => {
 
 const getDatesDifference = (start: Date, end: Date) => {
   const diffInSeconds = Math.floor((end.getTime() - start.getTime()) / 1000);
-  const daysDiff = Math.floor(diffInSeconds / 60 / 60 / 24);
+  
+  const monthsDiff = Math.floor(diffInSeconds / 60 / 60 / 24 / 30)
+  const daysDiff = Math.floor(diffInSeconds / 60 / 60 / 24 % 30);
+  if (monthsDiff) return {monthsDiff, daysDiff};
+  
   const hoursDiff = Math.floor(diffInSeconds / 60 / 60 % 24);
-
   if (daysDiff) return {daysDiff, hoursDiff};
   
   const minutesDiff = Math.floor(diffInSeconds / 60 % 60);
@@ -49,7 +52,8 @@ const getDatesDifference = (start: Date, end: Date) => {
 const twoDigit = (num: number) => num / 10 >= 1 ? num : '0'+num;
 
 const formatDatesDifference = (dateDifference: ReturnType<typeof getDatesDifference>) => {
-  if (dateDifference.daysDiff) return `${dateDifference.daysDiff}days ${dateDifference.hoursDiff}h`;
+  if (dateDifference.monthsDiff) return `${dateDifference.monthsDiff}m ${dateDifference.daysDiff}d`;
+  else if (dateDifference.daysDiff) return `${dateDifference.daysDiff}days ${dateDifference.hoursDiff}h`;
   else if (dateDifference.minutesDiff) return [
       twoDigit(dateDifference.hoursDiff), 
       twoDigit(dateDifference.minutesDiff), 
