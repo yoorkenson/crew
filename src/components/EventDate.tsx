@@ -27,16 +27,10 @@ export const EventDate = ({event} : EventDateProps) => {
       {date && date > new Date() && <CountDown targetDate={date}/>}
     </>
   )
-} 
-
-
-const formatDateString = (dateString: string) => (
-  dateString.slice(0, 4) + '/' + dateString.slice(4, 6) + '/' + dateString.slice(6, 8)
-)
+}
 
 const getValidEventDate = (event: IEvent) => {
-  const dateString = formatDateString(event.date);
-  return new Date(`${dateString} ${event.time}`);
+  return new Date(`${event.date} ${event.time}`);
 }
 
 const getDateLabel = (date: Date) => {

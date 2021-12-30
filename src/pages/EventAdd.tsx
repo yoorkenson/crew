@@ -11,6 +11,12 @@ import Picker from 'emoji-picker-react';
 import { Field, Form, Formik } from 'formik'
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { addPost } from '../api/UserService';
+import * as yup from 'yup';
+
+const validationSchema = yup.object().shape({
+    date: yup.string().required().matches(/^\d{4}\/\d{2}\/\d{2}$/, {message: 'Date should look like 2021/12/21'}),
+    time: yup.string().required().matches(/^((1[0-2]|0?[1-9]):([0-5][0-9]) ([AaPp][Mm]))$/, 'Time should look like 7:00 pm')
+})
 
 const EventAdd = () => {
 
@@ -46,6 +52,7 @@ const EventAdd = () => {
                         description: '',
                         chat: ''
                     }}
+                    validationSchema={validationSchema}
                     onSubmit={ async values => {
                         const eventPost = {
                             title: values.title,
@@ -65,7 +72,7 @@ const EventAdd = () => {
                         await history.push(RouteNames.EVENTS)
                     }}
                 >
-                {({ values }) => (
+                {({ values, errors }) => (
                     <Form className='event'>
                         <div className={color}>
                             <div className="container">
@@ -171,6 +178,7 @@ const EventAdd = () => {
                                             </div>
                                         </div>
                                         <button type='submit' className="button button_event">Publish</button>
+                                        {Object.keys(errors).length ? Object.values(errors)[0] : null}
                                     </div>
                                 </div>
                             </div>
