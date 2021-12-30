@@ -113,7 +113,9 @@ const EventDetails: FC = () => {
                                         </div>
                                     </div>
                                     {joined ? (
-                                        <a className="button button_event" href={event.chat}>{event.chat}</a>
+                                        <a className="button button_event" href={event.chat} target='_blank' rel='noreferrer'>
+                                            {event.chat}
+                                        </a>
                                     ) : (
                                         <button className="button button_event" onClick={onJoin}>Join</button>
                                     )}
