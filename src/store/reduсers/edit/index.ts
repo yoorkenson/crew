@@ -13,7 +13,8 @@ const initialState: EditState = {
         alcohol: false,
         alcohol_visible: true,
         smoking: false,
-        smoking_visible: true
+        smoking_visible: true,
+        id: -1
     } as IEdit,
     isLoading: false,
     error: ''

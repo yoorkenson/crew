@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from "axios";
+import { array } from "yup/lib/locale";
 import { IEvent } from "../models/IEvent";
 import { ExtendedIRegister } from "../models/IRegister";
 import { IUser } from "../models/IUser";
@@ -26,7 +27,12 @@ export async function addPost(postParameters: any) {
 }
 
 export async function getPosts() {
-    return getPost(routes.posts);
+    return getPost(routes.posts).then(response => {
+        return (response.data as (IEvent & {meta: Record<string, unknown>})[]).map(event => ({
+            ...event,
+            members: event.meta.members ? (event.meta.members as any).split('|').map((id: string) => parseInt(id)) : []
+        }))
+    });
 }
 
 export async function getMyPosts(id: number) {

@@ -6,9 +6,10 @@ import avatar from '../assets/images/avatar.png'
 import { Link, useParams } from 'react-router-dom';
 import { RouteNames } from '../routes';
 import { IEvent } from '../models/IEvent';
-import { getPost, getUserName } from '../api/PostsService';
+import { getPost, getUserName, joinEvent } from '../api/PostsService';
 import { EventDate } from '../components/EventDate';
 import { Spinner } from '../components/Spinner';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 
 interface EventDetailsParams {
     id: string
@@ -21,18 +22,36 @@ const EventDetails: FC = () => {
 
     const [event, setEvent] = useState<IEvent | null>(null);
     const [authorName, setAuthorName] = useState<string>('');
+    const [joined, setJoined] = useState(false);
+
+    const currentUser = useTypedSelector(state => state.edit.editInfo);
+    
 
     const fetchEvent = async (id: string) => {
         if (id) {
             const fetchedEvent = await getPost(id);
             if (fetchedEvent) setEvent(fetchedEvent); 
             setAuthorName(await getUserName((fetchedEvent as IEvent).author));
+            if (currentUser.id) setJoined((fetchedEvent as IEvent).members.includes(currentUser.id));
         }
     }
 
     useEffect(() => {
         fetchEvent(id);
     }, [id])
+
+
+    const onJoin = () => {
+        if ( joined ) return;
+        joinEvent(parseInt(id)).then(res => {
+            setJoined(res);
+            fetchEvent(id);
+        });
+    }
+
+    console.log({
+        joined
+    })
     
     return (
         <div className="main__wrapper">
@@ -71,7 +90,7 @@ const EventDetails: FC = () => {
                                             <div className="events__item__info__mini">
                                                 <img src={person} alt="" className="events__item__icon"/>
                                                 <div className="events__item__text">
-                                                    2/{event?.group_size}
+                                                    {event.members.length}/{event?.group_size}
                                                 </div>
                                             </div>
                                         </div>
@@ -93,7 +112,11 @@ const EventDetails: FC = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <button className="button button_event">Join</button>
+                                    {joined ? (
+                                        <a className="button button_event" href={event.chat}>{event.chat}</a>
+                                    ) : (
+                                        <button className="button button_event" onClick={onJoin}>Join</button>
+                                    )}
                                 </div>
                             </div>
                         </div>

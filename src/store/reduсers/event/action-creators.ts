@@ -12,8 +12,8 @@ export const EventActionCreators = {
         dispatch(EventActionCreators.setIsLoading(true))
         const posts = await getPosts()
         dispatch(EventActionCreators.setIsLoading(false))
-        console.log('ALL POSTS: ', posts.data)
-        return dispatch(EventActionCreators.setPosts(posts.data))
+        console.log('ALL POSTS: ', posts)
+        return dispatch(EventActionCreators.setPosts(posts))
     },
     getCreatedPosts: (id: number) =>  async (dispatch: AppDispatch) => {
         dispatch(EventActionCreators.setIsLoading(true))

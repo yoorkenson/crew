@@ -9,6 +9,13 @@ import Editor from './pages/Editor';
 
 
 function App() {
+
+	const {getProfileInfo} = useActions();
+
+	useEffect(() => {
+		getProfileInfo()
+	})
+	
 	return (
 		<div className="App">
 			<AppRouter/>

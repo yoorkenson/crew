@@ -1,7 +1,7 @@
 export interface IEvent {
     id: number
     author: string
-    membersId: Array<string>
+    members: number[]
     location: string
     emoji: string
     slug: string

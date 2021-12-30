@@ -1,7 +1,7 @@
 import React, { FC, FunctionComponent, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 
-import members from '../assets/images/members.svg'
+import membersIcon from '../assets/images/members.svg'
 import { IEvent } from '../models/IEvent';
 import { RouteNames } from '../routes';
 import { EventDate } from './EventDate';
@@ -13,7 +13,8 @@ export interface EventItemProps {
 
 const EventItem: FunctionComponent<EventItemProps> = ({item}: EventItemProps & { children?: ReactNode }) => {
 
-    const {color, emoji, slug, date, membersId, location, time, group_size, description, chat} = item
+    const {color, emoji, members, group_size, description} = item
+    
     return (
         <>
             <Link to={`${RouteNames.EVENT_PAGE}/${item.id}`} className={color}>
@@ -27,9 +28,9 @@ const EventItem: FunctionComponent<EventItemProps> = ({item}: EventItemProps & {
                     <div className="events__item__info">
                         <EventDate event={item} />
                         <div className="events__item__info__mini">
-                            <img src={members} alt="" className="events__item__icon"/>
+                            <img src={membersIcon} alt="" className="events__item__icon"/>
                             <div className="events__item__text">
-                                2/{group_size}
+                                {members.length}/{group_size}
                             </div>
                         </div>
                     </div>
