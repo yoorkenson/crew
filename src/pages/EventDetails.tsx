@@ -1,46 +1,25 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 import person from '../assets/images/person.svg'
 import location from '../assets/images/location.svg'
-import clock from '../assets/images/clock.svg'
-import sandClock from '../assets/images/clock_sand.svg'
 import avatar from '../assets/images/avatar.png'
 import { Link, useParams } from 'react-router-dom';
 import { RouteNames } from '../routes';
-import { useTypedSelector } from '../hooks/useTypedSelector';
 import { IEvent } from '../models/IEvent';
 import { getPost, getUserName } from '../api/PostsService';
+import { EventDate } from '../components/EventDate';
+import { Spinner } from '../components/Spinner';
 
 interface EventDetailsParams {
     id: string
 }
 
-const formatDateString = (dateString: string) => (
-    dateString.slice(0, 4) + '/' + dateString.slice(4, 6) + '/' + dateString.slice(6, 8)
-)
-
-const getValidEventDate = (event: IEvent) => {
-    const dateString = formatDateString(event.date);
-    return new Date(`${dateString} ${event.time}`);
-}
-
-const getDateLabel = (date: Date) => {
-    const today = new Date();
-    if (today.getDate() === date.getDate()) return 'today';
-    else if (today.getDate() === date.getDate() - 1) return 'tomorrow';
-    return date.toLocaleDateString('en-us', {day: '2-digit', month: 'long', year: 'numeric'});
-}
-
-const getTimeLabel = (date: Date) => {
-    return date.toLocaleTimeString('en-us', {hour12: true, minute: '2-digit', hour: 'numeric'})
-}
 
 const EventDetails: FC = () => {
 
     const { id } = useParams<EventDetailsParams>();
 
     const [event, setEvent] = useState<IEvent | null>(null);
-    const [date, setDate] = useState<Date | null>(null);
     const [authorName, setAuthorName] = useState<string>('');
 
     const fetchEvent = async (id: string) => {
@@ -52,10 +31,6 @@ const EventDetails: FC = () => {
     }
 
     useEffect(() => {
-        if (event) setDate(getValidEventDate(event));
-    }, [event]);
-
-    useEffect(() => {
         fetchEvent(id);
     }, [id])
     
@@ -65,7 +40,7 @@ const EventDetails: FC = () => {
                 Crewwww
             </div>
             <div className="main__wrapper__app">
-                {event && (
+                {event ? (
                     <div className='event'>
                         <div className="event__header event__header_pink">
                             <div className="container">
@@ -101,22 +76,7 @@ const EventDetails: FC = () => {
                                             </div>
                                         </div>
                                         <div className="event__info__top">
-                                            <div className="events__item__info__mini">
-                                                <img src={clock} alt="" className="events__item__icon"/>
-                                                <div className="events__item__text">
-                                                    { date && (
-                                                        getTimeLabel(date) + ' ' + getDateLabel(date)
-                                                    ) }
-                                                </div>
-                                            </div>
-                                            {date && date > new Date() && (
-                                                <div className="events__item__info__mini">
-                                                    <img src={sandClock} alt="" className="events__item__icon"/>
-                                                    <div className="events__item__text events__item__text_orange">
-                                                        <CountDown targetDate={date} />
-                                                    </div>
-                                                </div>
-                                            )}
+                                            <EventDate event={event} />
                                         </div>
                                     </div>
                                     <div className="events__item__descr">
@@ -138,64 +98,12 @@ const EventDetails: FC = () => {
                             </div>
                         </div>
                     </div>
-                )}
+                ) : <Spinner />}
             </div>
         </div>
     );
 };
 
-interface TimerProps {
-    targetDate: Date
-}
 
-
-const getDatesDifference = (start: Date, end: Date) => {
-    const diffInSeconds = Math.floor((end.getTime() - start.getTime()) / 1000);
-    const daysDiff = Math.floor(diffInSeconds / 60 / 60 / 24);
-    const hoursDiff = Math.floor(diffInSeconds / 60 / 60 % 24);
-
-    if (daysDiff) return {daysDiff, hoursDiff};
-    
-    const minutesDiff = Math.floor(diffInSeconds / 60 % 60);
-    const secondsDiff = diffInSeconds % 60;
-
-    return {hoursDiff, minutesDiff, secondsDiff};
-}
-
-const twoDigit = (num: number) => num / 10 > 1 ? num : '0'+num;
-
-const formatDatesDifference = (dateDifference: ReturnType<typeof getDatesDifference>) => {
-    if (dateDifference.daysDiff) return `${dateDifference.daysDiff}days ${dateDifference.hoursDiff}h`;
-    else if (dateDifference.minutesDiff) return [
-        twoDigit(dateDifference.hoursDiff), 
-        twoDigit(dateDifference.minutesDiff), 
-        twoDigit(dateDifference.secondsDiff)
-    ].join(':');
-}
-
-const CountDown = ({targetDate} : TimerProps) => {
-
-    const [datesDifference, setDatesDifference] = useState<ReturnType<typeof getDatesDifference> | null>(null);
-    const timerInterval = useRef<NodeJS.Timeout | null>(null);
-
-    useEffect(() => {
-        const tmpDatesDiff = getDatesDifference(new Date(), targetDate);
-        if (!tmpDatesDiff.daysDiff) {
-            timerInterval.current = setInterval(() => {
-                setDatesDifference(getDatesDifference(new Date(), targetDate));
-            }, 1000)
-        }
-        setDatesDifference(tmpDatesDiff);
-        return () => {
-            if (timerInterval.current) clearInterval(timerInterval.current)
-        };
-    }, [setDatesDifference, targetDate])
-
-    return (
-        <>
-            {datesDifference && formatDatesDifference(datesDifference)}
-        </>
-    )
-};
 
 export default EventDetails;

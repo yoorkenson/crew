@@ -1,11 +1,10 @@
 import React, { FC, FunctionComponent, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 
-import clock from '../assets/images/clock.svg'
-import sandClock from '../assets/images/clock_sand.svg'
 import members from '../assets/images/members.svg'
 import { IEvent } from '../models/IEvent';
 import { RouteNames } from '../routes';
+import { EventDate } from './EventDate';
 
 export interface EventItemProps {
     item: IEvent
@@ -26,18 +25,7 @@ const EventItem: FunctionComponent<EventItemProps> = ({item}: EventItemProps & {
                        {slug}
                     </h2>
                     <div className="events__item__info">
-                        <div className="events__item__info__mini">
-                            <img src={clock} alt="" className="events__item__icon"/>
-                            <div className="events__item__text">
-                                {date} {time}
-                            </div>
-                        </div>
-                        <div className="events__item__info__mini">
-                            <img src={sandClock} alt="" className="events__item__icon"/>
-                            <div className="events__item__text events__item__text_orange">
-                                01:59:25
-                            </div>
-                        </div>
+                        <EventDate event={item} />
                         <div className="events__item__info__mini">
                             <img src={members} alt="" className="events__item__icon"/>
                             <div className="events__item__text">
