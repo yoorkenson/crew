@@ -1,5 +1,5 @@
 export interface IEvent {
-    id: string
+    id: number
     author: string
     membersId: Array<string>
     location: string
@@ -12,4 +12,7 @@ export interface IEvent {
     description: string
     chat: string
     link: string
+    title: {
+        rendered: string
+    }
 }

@@ -12,12 +12,12 @@ export interface EventItemProps {
     key: string
 }
 
-const EventItem: FunctionComponent<EventItemProps> = ({item, key}: EventItemProps & { children?: ReactNode }) => {
+const EventItem: FunctionComponent<EventItemProps> = ({item}: EventItemProps & { children?: ReactNode }) => {
 
     const {emoji, slug, date, membersId, location, time, group_size, description, chat} = item
     return (
         <>
-            <Link to={RouteNames.EVENT_PAGE} className="events__item events__item_green">
+            <Link to={`${RouteNames.EVENT_PAGE}/${item.id}`} className="events__item events__item_green">
                 <div className="events__item__top">
                     {emoji}
                 </div>
