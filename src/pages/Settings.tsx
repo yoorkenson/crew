@@ -4,12 +4,14 @@ import Footer from '../components/Footer';
 import { RouteNames } from '../routes';
 import avatar from '../assets/images/avatar.png'
 import { useActions } from '../hooks/useActions';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 
 const Settings = () => {
 
     const {logout} = useActions()
     const history = useHistory()
     const path = history.location.pathname
+    const {editInfo} = useTypedSelector(state => state.edit)
 
     return (
         <>
@@ -31,7 +33,7 @@ const Settings = () => {
                             </div>
                             <div className="settings">
                                 <div className="title_black">
-                                    Jessica Tan
+                                    {editInfo.name}
                                 </div> 
                                 <div className="settings__avatar">
                                     <img src={avatar} alt="" className="settings__avatar__image"/>
