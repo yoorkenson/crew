@@ -54,7 +54,6 @@ export async function getUserInfo() {
 }
 
 export async function registerPost(endpoint: string, body: any) {
-    console.log('BODY:_________', body)
     try {
         return await axios.post(`${_baseURL}/${endpoint}`, body,{
             headers: {
@@ -82,7 +81,6 @@ export async function sendLogin(endpoint: string, body: any) {
     } catch (error) {
         console.log('sendLogin Error')
     }
-
 }
 
 export async function sendUserData(endpoint: string, body: any) {
