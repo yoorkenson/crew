@@ -36,7 +36,12 @@ export async function getPosts() {
 }
 
 export async function getMyPosts(id: number) {
-    return getPost(`${routes.posts}/?author=${id}`);
+    return getPost(`${routes.posts}/?author=${id}`).then(response => {
+        return (response.data as (IEvent & {meta: Record<string, unknown>})[]).map(event => ({
+            ...event,
+            members: event.meta.members ? (event.meta.members as any).split('|').map((id: string) => parseInt(id)) : []
+        }))
+    });
 }
 
 export async function addUserInfo(userParameters: any) {

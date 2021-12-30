@@ -19,7 +19,7 @@ export const EventActionCreators = {
         dispatch(EventActionCreators.setIsLoading(true))
         const posts = await getMyPosts(id)
         dispatch(EventActionCreators.setIsLoading(false))
-        console.log('CREATED POSTS: ', posts.data)
-        return dispatch(EventActionCreators.setCreatedPosts(posts.data))
+        console.log('CREATED POSTS: ', posts)
+        return dispatch(EventActionCreators.setCreatedPosts(posts))
     }
 }
