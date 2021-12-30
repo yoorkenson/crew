@@ -9,6 +9,7 @@ import { Link, useParams } from 'react-router-dom';
 import { RouteNames } from '../routes';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { IEvent } from '../models/IEvent';
+import { getPost } from '../api/PostsService';
 
 interface EventDetailsParams {
     id: string
@@ -38,15 +39,23 @@ const EventDetails: FC = () => {
 
     const { id } = useParams<EventDetailsParams>();
 
-    const events = useTypedSelector(state => state.event.allEvents.events);
-
-    const event = events.find(event => event.id === parseInt(id));
-
+    const [event, setEvent] = useState<IEvent | null>(null);
     const [date, setDate] = useState<Date | null>(null);
+
+    const fetchEvent = async (id: string) => {
+        if (id) {
+            const fetchedEvent = await getPost(id);
+            if (fetchedEvent) setEvent(fetchedEvent); 
+        }
+    }
 
     useEffect(() => {
         if (event) setDate(getValidEventDate(event));
     }, [event]);
+
+    useEffect(() => {
+        fetchEvent(id);
+    }, [id])
     
     return (
         <div className="main__wrapper">
@@ -54,76 +63,78 @@ const EventDetails: FC = () => {
                 Crewwww
             </div>
             <div className="main__wrapper__app">
-                <div className='event'>
-            <div className="event__header event__header_pink">
-                <div className="container">
-                    <div className="event__header__wrapper">
-                        <div className="header__link__wrapper">
-                            <Link to={RouteNames.EVENTS} className="event__header__subtitle__link"/>
-                            <div className="event__header__subtitle">
-                                {event?.emoji}
+                {event && (
+                    <div className='event'>
+                        <div className="event__header event__header_pink">
+                            <div className="container">
+                                <div className="event__header__wrapper">
+                                    <div className="header__link__wrapper">
+                                        <Link to={RouteNames.EVENTS} className="event__header__subtitle__link"/>
+                                        <div className="event__header__subtitle">
+                                            {event?.emoji}
+                                        </div>
+                                    </div>
+                                    <h1 className="event__header__title">
+                                        {event?.title.rendered}
+                                    </h1>
+                                </div>
                             </div>
                         </div>
-                        <h1 className="event__header__title">
-                            {event?.title.rendered}
-                        </h1>
+                        <div className="event__main">
+                            <div className="container">
+                                <div className="event__wrapper">
+                                    <div className="event__info">
+                                        <div className="event__info__top">
+                                            <div className="events__item__info__mini">
+                                                <img src={location} alt="" className="events__item__icon"/>
+                                                <div className="events__item__text">
+                                                    {event?.location} 
+                                                </div>
+                                            </div>
+                                            <div className="events__item__info__mini">
+                                                <img src={person} alt="" className="events__item__icon"/>
+                                                <div className="events__item__text">
+                                                    2/{event?.group_size}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="event__info__top">
+                                            <div className="events__item__info__mini">
+                                                <img src={clock} alt="" className="events__item__icon"/>
+                                                <div className="events__item__text">
+                                                    { date && (
+                                                        getTimeLabel(date) + ' ' + getDateLabel(date)
+                                                    ) }
+                                                </div>
+                                            </div>
+                                            <div className="events__item__info__mini">
+                                                <img src={sandClock} alt="" className="events__item__icon"/>
+                                                <div className="events__item__text events__item__text_orange">
+                                                    {date && <CountDown targetDate={date} />}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="events__item__descr">
+                                        {event?.description} 
+                                    </div>
+                                    <div className="event__members">
+                                        <div className="event__member__item">
+                                            <img src={avatar} alt="" className="event__member__img"/>
+                                            <div className="event__member__name">
+                                                Jessica Tan
+                                            </div>
+                                            <div className="event__member__role">
+                                                creator
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button className="button button_event">Join</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div className="event__main">
-                <div className="container">
-                    <div className="event__wrapper">
-                        <div className="event__info">
-                            <div className="event__info__top">
-                                <div className="events__item__info__mini">
-                                    <img src={location} alt="" className="events__item__icon"/>
-                                    <div className="events__item__text">
-                                        {event?.location} 
-                                    </div>
-                                </div>
-                                <div className="events__item__info__mini">
-                                    <img src={person} alt="" className="events__item__icon"/>
-                                    <div className="events__item__text">
-                                        2/{event?.group_size}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="event__info__top">
-                                <div className="events__item__info__mini">
-                                    <img src={clock} alt="" className="events__item__icon"/>
-                                    <div className="events__item__text">
-                                        { date && (
-                                            getTimeLabel(date) + ' ' + getDateLabel(date)
-                                        ) }
-                                    </div>
-                                </div>
-                                <div className="events__item__info__mini">
-                                    <img src={sandClock} alt="" className="events__item__icon"/>
-                                    <div className="events__item__text events__item__text_orange">
-                                        {date && <CountDown targetDate={date} />}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="events__item__descr">
-                            {event?.description} 
-                        </div>
-                        <div className="event__members">
-                            <div className="event__member__item">
-                                <img src={avatar} alt="" className="event__member__img"/>
-                                <div className="event__member__name">
-                                    Jessica Tan
-                                </div>
-                                <div className="event__member__role">
-                                    creator
-                                </div>
-                            </div>
-                        </div>
-                        <button className="button button_event">Join</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+                )}
             </div>
         </div>
     );
