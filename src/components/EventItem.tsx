@@ -22,7 +22,7 @@ const EventItem: FunctionComponent<EventItemProps> = ({item}: EventItemProps & {
                 </div>
                 <div className="events__item__main">
                     <h2 className="events__item__title">
-                       {slug}
+                       {item.title.rendered}
                     </h2>
                     <div className="events__item__info">
                         <EventDate event={item} />
