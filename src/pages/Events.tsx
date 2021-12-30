@@ -54,7 +54,7 @@ const Events: FC = () => {
                                     return (
                                         <EventItem 
                                             item={item}
-                                            key={item.id}
+                                            key={`${item.id}`}
                                         />
                                     )
                                 })}

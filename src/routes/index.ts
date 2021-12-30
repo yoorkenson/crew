@@ -51,7 +51,7 @@ export const privateRoutes: IRoute[] = [
         path: RouteNames.EVENTS, exact: true, component: Events
     },
     {
-        path: RouteNames.EVENT_PAGE, exact: true, component: EventPage
+        path: `${RouteNames.EVENT_PAGE}/:id`, exact: true, component: EventPage
     },
     {
         path: RouteNames.MY_EVENTS, exact: true, component: MyEvents

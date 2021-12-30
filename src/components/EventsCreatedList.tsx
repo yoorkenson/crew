@@ -23,7 +23,7 @@ const EventsCreatedList: FC = () => {
                 return (
                     <EventItem 
                         item={item}
-                        key={item.id}
+                        key={`${item.id}`}
                     />
                 )
             })}
