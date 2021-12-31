@@ -43,14 +43,14 @@ const Profile: FC = () => {
                             Edit
                         </Link>
                     </div>
-                    <div className="profile__slider">
+                    {/* <div className="profile__slider">
                         <div className="title_black">
                             {editInfo.name}
                         </div>
                         <div className="profile__slider__wrapper">
                             <Slider/>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="profile__about">
                         <div className="title_black">
                             About me
@@ -157,7 +157,7 @@ const Profile: FC = () => {
                             })}
                         </div>
                     </div>
-                    <div className="profile__instagram">
+                    {/* <div className="profile__instagram">
                         <div className="title_black">
                             Instagram
                         </div>
@@ -175,7 +175,7 @@ const Profile: FC = () => {
                             </div>
                             <div className="profile__instagram__slides">. . .</div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
                 </div>

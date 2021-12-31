@@ -9,7 +9,7 @@ export const _wpApiBase = 'wp/v2'
 
 export const routes = {
     jwt: 'jwt-auth/v1/token',
-    posts: `${_wpApiBase}/posts`,
+    posts: `${_wpApiBase}/posts/`,
     currentUserData: `${_wpApiBase}/users/me`,
     register: `${_wpApiBase}/register`,
 }
@@ -27,7 +27,7 @@ export async function addPost(postParameters: any) {
 }
 
 export async function getPosts() {
-    return getPost(routes.posts).then(response => {
+    return getPost(routes.posts+'?per_page=100').then(response => {
         return (response.data as (IEvent & {meta: Record<string, unknown>})[]).map(event => ({
             ...event,
             members: event.meta.members ? (event.meta.members as any).split('|').map((id: string) => parseInt(id)) : []
@@ -60,6 +60,8 @@ export async function getUserInfo() {
             alcohol_visible: data.alcohol_visible === '1',
             smoking: data.smoking === '1',
             smoking_visible: data.smoking_visible === '1',
+            joined_events: data.meta.joined_events ?    
+                data.meta.joined_events.split('|').map((idString: string) => parseInt(idString)) : []
         }
     })
 }

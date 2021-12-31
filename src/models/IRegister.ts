@@ -15,4 +15,5 @@ export interface ExtendedIRegister {
     gender: string,
     email_marketing: boolean,
     email: string,
+    phone: string
 }

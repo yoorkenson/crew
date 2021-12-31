@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { useActions } from '../hooks/useActions';
 import { useTypedSelector } from '../hooks/useTypedSelector';
@@ -7,6 +7,13 @@ import { privateRoutes, publicRoutes, RouteNames } from '../routes';
 
 const AppRouter: FC = () => {
     const { isAuth } = useTypedSelector(state => state.auth)
+
+    const {getProfileInfo} = useActions();
+
+    useEffect(() => {
+        if (isAuth) getProfileInfo();
+    }, [isAuth])
+    
         return (
             <Switch>
                 {(isAuth ? privateRoutes : publicRoutes).map(route => 

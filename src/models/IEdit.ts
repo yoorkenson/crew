@@ -12,6 +12,8 @@ export interface IEdit extends IRegister {
     alcohol_visible: boolean
     smoking: boolean
     smoking_visible: boolean
+    joined_events: number[]
+    phone: string
 }
 
 export interface IEditServer extends IRegister {

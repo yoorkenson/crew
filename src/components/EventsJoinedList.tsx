@@ -1,39 +1,32 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { RouteNames } from '../routes';
 import clock from '../assets/images/clock.svg'
 import members from '../assets/images/members.svg'
+import { IEvent } from '../models/IEvent';
+import { getCertainPosts } from '../api/PostsService';
+import { useTypedSelector } from '../hooks/useTypedSelector';
+import EventItem from './EventItem';
+import { Spinner } from './Spinner';
 
 const EventsJoinedList: FC = () => {
+
+    const [events, setEvents] = useState<IEvent[] | null>(null);    
+
+    const currentUser = useTypedSelector(state => state.edit.editInfo);
+    
+    useEffect(() => {
+        if (currentUser) getCertainPosts(currentUser.joined_events).then(fetchedEvents => setEvents(fetchedEvents));
+    }, [currentUser, setEvents])
+
+    console.log({events, currentUser});
+    
     return (
         <>
-            <Link to={RouteNames.EVENT_PAGE} className="events__item events__item_green">
-                <div className="events__item__top">
-                    🍃🍃🍃
-                </div>
-                <div className="events__item__main">
-                    <h2 className="events__item__title">
-                        Lunch @ Gardens by the bay
-                    </h2>
-                    <div className="events__item__info events__item__info_mevents">
-                        <div className="events__item__info__mini events__item__info__mini_mr">
-                            <img src={clock} alt="" className="events__item__icon"/>
-                            <div className="events__item__text">
-                                26/11/2021
-                            </div>
-                        </div>
-                        <div className="events__item__info__mini">
-                            <img src={members} alt="" className="events__item__icon"/>
-                            <div className="events__item__text">
-                                3 people
-                            </div>
-                        </div>
-                    </div>
-                    <div className="events__item__descr">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
-                    </div>
-                </div>
-            </Link>
+            {events ? (
+                events.map(event => <EventItem item={event} key={`${event.id}`} />)
+            ) : <Spinner />}
+            
         </>
     );
 };

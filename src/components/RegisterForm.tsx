@@ -30,7 +30,8 @@ const RegisterForm: FC = () => {
                 password:'',
                 confirmPassword:'',
                 termsCheck: false,
-                emailCheck: false
+                emailCheck: false,
+                phone: ''
             }}
             onSubmit={ async values => {
                 // values.email = values.email!.replaceAll(/[+\(\)\ -]/g, '')
@@ -44,7 +45,8 @@ const RegisterForm: FC = () => {
                         gender: values.gender,
                         email_marketing: values.emailCheck,
                         email: values.email,
-                        name: values.username
+                        name: values.username,
+                        phone: values.phone
                     }
                     await setRegister(postRegister)
                     await login(values.email, values.password)
@@ -94,6 +96,12 @@ const RegisterForm: FC = () => {
                     </div> */}
                 </div>
                 <div className="form__item">
+                    <label htmlFor="email">
+                        Phone
+                    </label>
+                    <Field required className='item__input' name='phone' type='tel' placeholder='placeholder'/>
+                </div>
+                {/* <div className="form__item">
                     <label htmlFor="OTP">
                         Fill your OTP code below
                     </label>
@@ -108,7 +116,7 @@ const RegisterForm: FC = () => {
                     <Link to='/' className='OTP__code'>
                         Didn’t get a code? 
                     </Link>
-                </div>
+                </div> */}
                 <div className="form__item">
                     <label htmlFor="password">
                         Password

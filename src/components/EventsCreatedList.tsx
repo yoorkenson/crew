@@ -12,21 +12,17 @@ const EventsCreatedList: FC = () => {
 
     const { getCreatedPosts } = useActions()
     useEffect(() => {
-        getCreatedPosts(id!)
-    }, [])
-
+        if (id) getCreatedPosts(id)
+    }, [id])
 
     return (
         <>
-            {myEvents.map((item: IEvent) => {
-                console.log('IT IS AN EVENT ITEM')
-                return (
+            {myEvents.map((item: IEvent) => 
                     <EventItem 
                         item={item}
                         key={`${item.id}`}
                     />
-                )
-            })}
+            )}
         </>
     );
 };

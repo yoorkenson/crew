@@ -129,7 +129,7 @@ const Editor: FC = () => {
                         >
                             {({ values }) => (
                             <Form className="editor__wrapper">
-                                <div className="editor__photos">
+                                {/* <div className="editor__photos">
                                     <div className="title_black">
                                         My photos
                                     </div>
@@ -142,7 +142,7 @@ const Editor: FC = () => {
                                         <FormImage/>
 
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="editor__about">
                                     <div className="title_black">
                                         About me
@@ -216,14 +216,14 @@ const Editor: FC = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="editor__connect">
+                                {/* <div className="editor__connect">
                                     <div className="title_black">
                                         Connect Instagram
                                     </div>
                                     <div className="editor__connect__text">
                                         Not connected
                                     </div>
-                                </div>
+                                </div> */}
                                 <button type='submit' className="button button_24">{isLoading ? "Saving..." : "Save"}</button>
                             </Form>
                             )}

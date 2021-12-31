@@ -36,6 +36,10 @@ const EventDetails: FC = () => {
         }
     }
 
+    console.log({
+        currentUser
+    })
+
     useEffect(() => {
         fetchEvent(id);
     }, [id])
@@ -50,6 +54,8 @@ const EventDetails: FC = () => {
     }
 
     console.log({
+        members: event?.members, 
+        currentUser,
         joined
     })
     
@@ -113,8 +119,8 @@ const EventDetails: FC = () => {
                                         </div>
                                     </div>
                                     {joined ? (
-                                        <a className="button button_event" href={event.chat} target='_blank' rel='noreferrer'>
-                                            {event.chat}
+                                        <a className="button button_event" href={`https://wa.me/${currentUser.phone}`} target='_blank' rel='noreferrer'>
+                                            {`https://wa.me/${currentUser.phone}`}
                                         </a>
                                     ) : (
                                         <button className="button button_event" onClick={onJoin}>Join</button>

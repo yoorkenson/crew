@@ -14,7 +14,9 @@ const initialState: EditState = {
         alcohol_visible: true,
         smoking: false,
         smoking_visible: true,
-        id: -1
+        id: -1,
+        joined_events: [],
+        phone: ''
     } as IEdit,
     isLoading: false,
     error: ''

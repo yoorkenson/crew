@@ -50,7 +50,7 @@ const EventAdd = () => {
                         date: '',
                         group_size: 0,
                         description: '',
-                        chat: ''
+                        // chat: ''
                     }}
                     validationSchema={validationSchema}
                     onSubmit={ async values => {
@@ -64,7 +64,7 @@ const EventAdd = () => {
                                 time: values.time,
                                 group_size: values.group_size,
                                 description: values.description,
-                                chat: values.chat,
+                                // chat: values.chat,
                                 date: values.date,
                             }
                         }
@@ -165,7 +165,7 @@ const EventAdd = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="editor__about event__about">
+                                        {/* <div className="editor__about event__about">
                                             <div className="title_black">
                                                 Chat
                                             </div>
@@ -176,7 +176,7 @@ const EventAdd = () => {
                                                 <img src={visible} alt="" className="social__item__visible"/>
                                                 <Field required className='event__whatsapp__input' type="text" name='chat' placeholder="https://wa.me/yourlinkhere"/>
                                             </div>
-                                        </div>
+                                        </div> */}
                                         <button type='submit' className="button button_event">Publish</button>
                                         {Object.keys(errors).length ? Object.values(errors)[0] : null}
                                     </div>
