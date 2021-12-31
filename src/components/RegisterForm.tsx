@@ -50,7 +50,7 @@ const RegisterForm: FC = () => {
                     }
                     await setRegister(postRegister)
                     await login(values.email, values.password)
-                    
+                    await history.push(RouteNames.EDIT)
                 } else {
                     alert('passwords must match')
                 }

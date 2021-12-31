@@ -54,6 +54,7 @@ const EventDetails: FC = () => {
     }
 
     console.log({
+        event,
         members: event?.members, 
         currentUser,
         joined

@@ -12,6 +12,10 @@ import { Field, Form, Formik } from 'formik'
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { addPost } from '../api/UserService';
 import * as yup from 'yup';
+import { MuiPickersUtilsProvider, DatePicker, TimePicker } from '@material-ui/pickers'
+import DateMomentUtils from '@date-io/moment'
+import { Moment } from 'moment';
+import moment from 'moment';
 
 const validationSchema = yup.object().shape({
     date: yup.string().required().matches(/^\d{4}\/\d{2}\/\d{2}$/, {message: 'Date should look like 2021/12/21'}),
@@ -24,6 +28,9 @@ const EventAdd = () => {
     interface IEmojiData {
         emoji: string
     }
+
+    const [selectedDateTime, handleDateTimeChange] = useState<Moment | null>()
+
 
     const {editInfo} = useTypedSelector(state => state.edit)
 
@@ -52,8 +59,10 @@ const EventAdd = () => {
                         description: '',
                         // chat: ''
                     }}
-                    validationSchema={validationSchema}
+                    // validationSchema={validationSchema}
                     onSubmit={ async values => {
+                        const date = selectedDateTime!.toDate().toLocaleDateString('en-us')
+                        const time = selectedDateTime!.toDate().toLocaleTimeString('en-us')
                         const eventPost = {
                             title: values.title,
                             status: 'publish',
@@ -61,11 +70,11 @@ const EventAdd = () => {
                                 emoji: `${chosenEmoji?.emoji}${chosenEmoji?.emoji}${chosenEmoji?.emoji}`,
                                 color: color,
                                 location: values.location,
-                                time: values.time,
+                                time: time,
                                 group_size: values.group_size,
                                 description: values.description,
                                 // chat: values.chat,
-                                date: values.date,
+                                date: date,
                             }
                         }
                         await addPost(eventPost)
@@ -132,16 +141,29 @@ const EventAdd = () => {
                                                 </Field>
                                             </div>
                                         </div>
+                                        <MuiPickersUtilsProvider utils={DateMomentUtils}>
                                         <div className="event__info__top">
                                             <div className="events__item__info__mini">
                                                 <img src={clock} alt="" className="events__item__icon"/>
-                                                <Field required className='events__item__text events__item__text_input' type="text" name='time' placeholder='At what time?'/>
+                                                <TimePicker 
+                                                    className='events__item__text events__item__text_input' 
+                                                    value={selectedDateTime} 
+                                                    onChange={(newValue) => handleDateTimeChange(newValue)} 
+                                                />
+                                                {/* <Field required className='events__item__text events__item__text_input' type="text" name='time' placeholder='At what time?'/> */}
                                             </div>
                                             <div className="events__item__info__mini">
                                                 <img src={calendar} alt="" className="events__item__icon"/>
-                                                <Field required className='events__item__text events__item__text_input' type="text" name='date' placeholder="What's date?"/>
+                                                <DatePicker 
+                                                    className='events__item__text events__item__text_input' 
+                                                    value={selectedDateTime}
+                                                    format="YYYY/DD/MM"
+                                                    onChange={(newValue) => handleDateTimeChange(newValue)} 
+                                                    />
+                                                {/* <Field required className='events__item__text events__item__text_input' type="text" name='date' placeholder="What's date?"/> */}
                                             </div>
                                         </div>
+                                        </MuiPickersUtilsProvider>
                                         <div className="editor__about event__about">
                                             <div className="title_black">
                                                 Event Description
